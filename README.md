@@ -1,24 +1,14 @@
-# README
+# Beauty Spaces version2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+モデリング・DB設計を見直してBeauty Spacesを再実装
 
-Things you may want to cover:
+## 開発環境
 
-* Ruby version
+Ruby: 2.5.1
 
-* System dependencies
+Rails: 5.2.3
 
-* Configuration
+PostgreSQL: 11.1
 
-* Database creation
+タスク管理: Trello
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
