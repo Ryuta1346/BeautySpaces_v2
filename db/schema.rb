@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2019_05_20_130406) do
     t.string "features"
     t.integer "num_of_stylists"
     t.integer "num_of_sheets"
-    t.datetime "opening_time"
-    t.datetime "closing_time"
+    t.time "opening_time"
+    t.time "closing_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_salons_on_category_id"

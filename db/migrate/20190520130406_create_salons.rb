@@ -10,8 +10,8 @@ class CreateSalons < ActiveRecord::Migration[5.2]
       t.string :features
       t.integer :num_of_stylists
       t.integer :num_of_sheets
-      t.datetime :opening_time
-      t.datetime :closing_time
+      t.time :opening_time
+      t.time :closing_time
 
       t.timestamps
     end
