@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_130406) do
+ActiveRecord::Schema.define(version: 2019_05_20_133116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,27 @@ ActiveRecord::Schema.define(version: 2019_05_20_130406) do
     t.index ["prefecture_id"], name: "index_salons_on_prefecture_id"
   end
 
+  create_table "stylists", force: :cascade do |t|
+    t.string "name"
+    t.bigint "prefecture_id"
+    t.bigint "category_id"
+    t.bigint "salon_id"
+    t.string "active_scope"
+    t.string "tel"
+    t.string "email"
+    t.string "features"
+    t.integer "history_of_stylist"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_stylists_on_category_id"
+    t.index ["prefecture_id"], name: "index_stylists_on_prefecture_id"
+    t.index ["salon_id"], name: "index_stylists_on_salon_id"
+  end
+
   add_foreign_key "salons", "categories"
   add_foreign_key "salons", "prefectures"
+  add_foreign_key "stylists", "categories"
+  add_foreign_key "stylists", "prefectures"
+  add_foreign_key "stylists", "salons"
 end
