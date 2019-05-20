@@ -23,4 +23,5 @@ Stylist.seed(:id,
                  features:"髪型の再現性に自信あり",
                  history_of_stylist: 2011,
                  photo: ""
-             })
+             }
+)
