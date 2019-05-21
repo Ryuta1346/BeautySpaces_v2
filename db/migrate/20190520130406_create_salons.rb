@@ -6,7 +6,6 @@ class CreateSalons < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :place
       t.string :tel
-      t.string :email
       t.string :features
       t.integer :num_of_stylists
       t.integer :num_of_sheets

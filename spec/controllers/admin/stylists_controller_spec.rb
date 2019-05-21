@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::StylistController, type: :controller do
+RSpec.describe Admin::StylistsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do

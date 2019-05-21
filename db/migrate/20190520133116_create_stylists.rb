@@ -7,7 +7,6 @@ class CreateStylists < ActiveRecord::Migration[5.2]
       t.references :salon, foreign_key: true
       t.string :active_scope
       t.string :tel
-      t.string :email
       t.string :features
       t.integer :history_of_stylist
       t.string :photo
