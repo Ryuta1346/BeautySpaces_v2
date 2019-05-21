@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :salon, only:[:show]
+  end
   root 'top#home'
   get '/about', to: 'top#about'
   get '/help', to: 'top#help'
