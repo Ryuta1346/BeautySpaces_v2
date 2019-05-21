@@ -1,6 +1,5 @@
 class Admin::SalonsController < Admin::BaseController
-  def index
-  end
+  before_action :authenticate_salon!
 
   def show
   end

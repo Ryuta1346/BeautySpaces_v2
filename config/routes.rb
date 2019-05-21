@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :salons
-  devise_for :stylists
+  devise_for :salon
+  devise_for :stylist
 
   namespace :admin do
-    get 'stylists/show'
-  end
-  namespace :admin do
-    resources :salon, only:[:show]
-    resources :stylist, only:[:show]
+    resource :salon, only:[:show]
+    resource :stylist, only:[:show]
   end
 
   root 'top#home'
