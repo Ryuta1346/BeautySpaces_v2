@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :salon
-  devise_for :stylist
-
   namespace :admin do
     resource :salon, only:[:show]
     resource :stylist, only:[:show]
@@ -13,3 +10,6 @@ Rails.application.routes.draw do
   get '/contact', to: 'top#contact'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
+## 各種別のユーザー登録は、deviseの画面1つだけにし、種別に応じて登録時にタイプを選択させるようにすれば登録画面を種別分作成せずに済む？
+# =>deviseの画面はデフォルト1つだけでOK？

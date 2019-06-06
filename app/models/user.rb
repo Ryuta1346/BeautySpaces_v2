@@ -1,3 +1,2 @@
-class User < ApplicationRecord
-  belongs_to :prefecture
+class User < Cusromer
 end

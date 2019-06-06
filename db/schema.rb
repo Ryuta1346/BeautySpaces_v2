@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_21_143429) do
+ActiveRecord::Schema.define(version: 2019_06_06_151420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,76 +21,38 @@ ActiveRecord::Schema.define(version: 2019_05_21_143429) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.string "tel"
+    t.bigint "prefecture_id"
+    t.bigint "category_id"
+    t.integer "birth_of_year"
+    t.string "activity_scope"
+    t.string "features"
+    t.integer "num_of_sheets"
+    t.time "opening_time"
+    t.time "ending_time"
+    t.integer "since"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["category_id"], name: "index_customers_on_category_id"
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["prefecture_id"], name: "index_customers_on_prefecture_id"
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "salons", force: :cascade do |t|
-    t.bigint "category_id"
-    t.bigint "prefecture_id"
-    t.string "name"
-    t.string "place"
-    t.string "tel"
-    t.string "features"
-    t.integer "num_of_stylists"
-    t.integer "num_of_sheets"
-    t.time "opening_time"
-    t.time "closing_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.index ["category_id"], name: "index_salons_on_category_id"
-    t.index ["email"], name: "index_salons_on_email", unique: true
-    t.index ["prefecture_id"], name: "index_salons_on_prefecture_id"
-    t.index ["reset_password_token"], name: "index_salons_on_reset_password_token", unique: true
-  end
-
-  create_table "stylists", force: :cascade do |t|
-    t.string "name"
-    t.bigint "prefecture_id"
-    t.bigint "category_id"
-    t.bigint "salon_id"
-    t.string "active_scope"
-    t.string "tel"
-    t.string "features"
-    t.integer "history_of_stylist"
-    t.string "photo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.index ["category_id"], name: "index_stylists_on_category_id"
-    t.index ["email"], name: "index_stylists_on_email", unique: true
-    t.index ["prefecture_id"], name: "index_stylists_on_prefecture_id"
-    t.index ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true
-    t.index ["salon_id"], name: "index_stylists_on_salon_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "tel"
-    t.string "email"
-    t.bigint "prefecture_id"
-    t.string "place"
-    t.integer "birth_of_year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
-  end
-
-  add_foreign_key "salons", "categories"
-  add_foreign_key "salons", "prefectures"
-  add_foreign_key "stylists", "categories"
-  add_foreign_key "stylists", "prefectures"
-  add_foreign_key "stylists", "salons"
-  add_foreign_key "users", "prefectures"
+  add_foreign_key "customers", "categories"
+  add_foreign_key "customers", "prefectures"
 end
