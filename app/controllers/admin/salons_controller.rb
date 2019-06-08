@@ -4,7 +4,6 @@ class Admin::SalonsController < Admin::Base
   def show
   end
 
-
   def edit
   end
 
@@ -36,5 +35,4 @@ class Admin::SalonsController < Admin::Base
                                     :opening_time,
                                     :closing_time)
     end
-
 end

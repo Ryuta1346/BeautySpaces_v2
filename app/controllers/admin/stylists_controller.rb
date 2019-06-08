@@ -32,7 +32,6 @@ class Admin::StylistsController < Admin::Base
                                       :tel,
                                       :address1,
                                       :address2,
-                                      :features
-      )
+                                      :features)
     end
 end
