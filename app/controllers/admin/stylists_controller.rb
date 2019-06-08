@@ -1,4 +1,4 @@
-class Admin::StylistsController < Admin::BaseController
+class Admin::StylistsController < Admin::Base
   def show
   end
 end

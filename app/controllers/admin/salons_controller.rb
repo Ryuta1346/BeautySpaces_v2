@@ -1,4 +1,4 @@
-class Admin::SalonsController < Admin::BaseController
+class Admin::SalonsController < Admin::Base
   def show
   end
 end

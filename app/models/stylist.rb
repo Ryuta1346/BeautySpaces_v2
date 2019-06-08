@@ -1,2 +1,2 @@
-class Stylist < Cusromer
+class Stylist < Customer
 end

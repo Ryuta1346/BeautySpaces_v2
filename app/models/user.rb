@@ -1,2 +1,2 @@
-class User < Cusromer
+class User < Customer
 end

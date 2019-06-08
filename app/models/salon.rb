@@ -1,2 +1,2 @@
-class Salon < Cusromer
+class Salon < Customer
 end
