@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   devise_for :customers
 
   namespace :admin do
-    resource :salon, only:[:show]
-    resource :stylist, only:[:show]
+    resource :salon, only:[:show, :edit, :update]
+    resource :stylist, only:[:show, :edit, :update]
   end
 
-  resources :users, only:[:show]
+  resources :users, only:[:show, :edit, :update]
 
   root 'top#home'
   get '/about', to: 'top#about'

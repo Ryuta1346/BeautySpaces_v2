@@ -1,0 +1,45 @@
+Customer.seed(:id,
+              {
+                  id:                    1,
+                  name:                  "AAA Salon",
+                  category_id:           0,
+                  prefecture_id:         12,
+                  address1:              "渋谷区",
+                  address2:              "神南2-2-1",
+                  tel:                   "00000000000",
+                  email:                 "salon1@example.com",
+                  password:              "foobar",
+                  password_confirmation: "foobar",
+                  features:              "南国風のリラックスできる雰囲気の店舗です",
+                  num_of_sheets:         5,
+                  opening_time:          "09:30",
+                  closing_time:          "22:00",
+                  type: "Salon"
+              }, {
+                  id:                    2,
+                  name:                  "Stylist Suzuki",
+                  category_id:           0,
+                  prefecture_id:         12,
+                  address1:              "渋谷区",
+                  address2:              "神南2-2-1",
+                  tel:                   "00000000001",
+                  email:                 "stylist1@example.com",
+                  password:              "foobar",
+                  password_confirmation: "foobar",
+                  features:              "南国風のリラックスできる雰囲気の店舗です",
+                  opening_time:          "09:30",
+                  closing_time:          "22:00",
+                  type: "Stylist"
+              }, {
+                  id:                    3,
+                  name:                  "田中　太郎",
+                  prefecture_id:         12,
+                  address1:              "新宿区",
+                  address2:              "西新宿2-8-1",
+                  tel:                   "00000000002",
+                  email:                 "user1@example.com",
+                  password:              "foobar",
+                  password_confirmation: "foobar",
+                  type: "User"
+              }
+)
