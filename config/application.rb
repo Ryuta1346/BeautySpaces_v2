@@ -37,5 +37,7 @@ module BeautySpaces
                        routing_specs: false,
                        request_specs: true
     end
+
+    config.autoload_paths += Dir["#{config.root}/app/models/**/"]
   end
 end

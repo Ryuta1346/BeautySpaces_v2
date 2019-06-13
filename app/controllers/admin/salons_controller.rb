@@ -22,6 +22,8 @@ class Admin::SalonsController < Admin::Base
     def set_current_salon
       if current_customer.type["Salon"]
         @salon ||= current_customer
+      else
+        redirect_to root_url
       end
     end
 
