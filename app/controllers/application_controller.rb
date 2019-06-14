@@ -8,13 +8,8 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource)
-      case resource
-      when Salon
-        admin_salon_path
-      when Stylist
-        admin_stylist_path
-      when User
-        user_path(resource)
-      end
+      return admin_salon_path if resource.class == Salon
+      return admin_stylist_path if resource.class == Stylist
+      return user_path(resource) if resource.class == User
     end
 end
