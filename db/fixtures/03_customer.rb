@@ -14,7 +14,7 @@ Customer.seed(:id,
                   num_of_sheets:         5,
                   opening_time:          '09:30',
                   closing_time:          '22:00',
-                  type:                  'Salon'
+                  type:                  1
               }, {
                   id:                    2,
                   name:                  'Stylist Suzuki',
@@ -29,7 +29,7 @@ Customer.seed(:id,
                   features:              '女性のショート〜ボブのカットが得意',
                   opening_time:          '09:30',
                   closing_time:          '22:00',
-                  type:                  'Stylist'
+                  type:                  2
               }, {
                   id:                    3,
                   name:                  '田中　太郎',
@@ -40,6 +40,6 @@ Customer.seed(:id,
                   email:                 'user1@example.com',
                   password:              'foobar',
                   password_confirmation: 'foobar',
-                  type:                  'User'
+                  type:                  0
               }
 )
