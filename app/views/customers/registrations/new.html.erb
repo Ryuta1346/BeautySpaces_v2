@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :type %><br />
-    <%= f.select :type, ["Salon", "Stylist", "User"] %>
+    <%= f.select :type, Customer.types.keys, {}  %>
   </div>
 
   <div class="actions">
