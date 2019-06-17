@@ -20,7 +20,7 @@ class Admin::StylistsController < Admin::Base
   private
 
     def set_current_stylist
-      redirect_to root_url unless current_customer.type["Stylist"]
+      redirect_to root_url unless current_customer.type[:Stylist]
       @stylist ||= current_customer
     end
 

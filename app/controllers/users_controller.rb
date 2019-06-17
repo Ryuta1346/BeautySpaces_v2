@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes!(stylist_params)
+    if @user.update_attributes!(user_params)
       flash[:success] = "情報を変更しました"
       redirect_to user_url
     else
@@ -19,7 +19,17 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
-  end
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def user_params
+      params.require(:user).permit(:name,
+                                   :tel,
+                                   :birth_of_year,
+                                   :prefecture_id,
+                                   :address1,
+                                   :address2
+      )
+    end
 end

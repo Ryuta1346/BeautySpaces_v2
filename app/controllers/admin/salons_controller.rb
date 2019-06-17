@@ -20,7 +20,7 @@ class Admin::SalonsController < Admin::Base
   private
 
     def set_current_salon
-      redirect_to root_url unless current_customer.type["Salon"]
+      redirect_to root_url unless current_customer.type[:Salon]
       @salon ||= current_customer
     end
 
