@@ -1,0 +1,45 @@
+main.col-md-9.ml-sm-auto.col-lg-10.px-4[role="main"]
+  h2
+    | Edit 
+    = @salon.name
+  = form_for(@salon, url: admin_salon_path) do |f|
+    - #= render 'shared/error_messages', object: f.object
+    .field
+      = f.label :category
+      br
+      = f.collection_select :category_id, Category.all, :id, :name
+    .field
+      = f.label :name
+      br
+      = f.text_field :name
+    .field
+      = f.label :都道府県
+      br
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+    .field
+      = f.label :市区町村
+      br
+      = f.text_field :address1
+    .field
+      = f.label :住所
+      br
+      = f.text_field :address2
+    .field
+      = f.label :tel
+      br
+      = f.telephone_field :tel
+    .field
+      = f.label :features
+      br
+      = f.text_field :features
+    .field
+      = f.label :num_of_sheets
+      br
+      = f.number_field :num_of_sheets
+    .actions
+      = f.submit "Update"
+  h3
+    | Delete Salon
+  p
+    = button_to "Delete Salon", admin_salon_path, data: { confirm: "Are you sure?" }, method: :delete
+  = link_to "Back", admin_salon_path

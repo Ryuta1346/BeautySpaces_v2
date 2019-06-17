@@ -1,0 +1,24 @@
+h1
+  | Admin::Stylists#show
+= link_to 'スタイリスト情報編集',  edit_admin_stylist_path
+= link_to 'Email/パスワード変更', edit_customer_registration_path
+= link_to 'DELETE', destroy_customer_session_path, method: :delete, data:{confritm: "Sign out?"}
+br
+|  Name: 
+= @stylist.name
+br
+|  Category: 
+= @stylist.category_id
+br
+|  Prefecture: 
+= @stylist.prefecture_id
+br
+|  Email: 
+= @stylist.email
+br
+|  TEL: 
+= @stylist.tel
+br
+|  Features: 
+= @stylist.features
+br

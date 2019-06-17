@@ -38,6 +38,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'seed-fu'
 gem 'devise'
+gem 'slim-rails', '~>3.1.3'
+gem 'html2slim'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -71,7 +73,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'launchy'
   gem 'shoulda-matchers',
-      git: 'https://github.com/thoughtbot/shoulda-matchers.git',
+      git:    'https://github.com/thoughtbot/shoulda-matchers.git',
       branch: 'rails-5'
 end
 
