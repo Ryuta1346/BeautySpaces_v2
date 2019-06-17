@@ -1,0 +1,2 @@
+class Stylist < Customer
+end

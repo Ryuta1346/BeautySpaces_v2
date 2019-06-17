@@ -1,0 +1,2 @@
+class Salon < Customer
+end

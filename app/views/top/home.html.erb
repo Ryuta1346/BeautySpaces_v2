@@ -1,3 +1,9 @@
 <h1>Top#home</h1>
-<%= link_to "Salon Sign_in", new_salon_session_path %> | <%= link_to "Salon Sign_up", new_salon_registration_path %><br/>
-<%= link_to "Stylist Sign_in", new_stylist_session_path %> | <%= link_to "Stylist Sign_up", new_stylist_registration_path %>
+<%= link_to "Sign_in", new_customer_session_path %><br/>
+<%= link_to "Sign_up", new_customer_registration_path %><br/>
+<%= link_to "Log_out", destroy_customer_session_path, method: :delete %><br />
+
+
+<% if current_customer && current_customer.type["User"] %>
+  <%= render 'shared/user_info' %>
+<% end %>

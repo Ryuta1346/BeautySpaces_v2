@@ -1,0 +1,56 @@
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <h2>Edit <%= @salon.name %></h2>
+
+  <%= form_for(@salon, url: admin_salon_path) do |f| %>
+    <%#= render 'shared/error_messages', object: f.object %>
+
+    <div class="field">
+      <%= f.label :category %><br/>
+      <%= f.collection_select :category_id, Category.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :都道府県 %><br/>
+      <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :市区町村 %><br/>
+      <%= f.text_field :address1 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :住所 %><br/>
+      <%= f.text_field :address2 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tel %><br/>
+      <%= f.telephone_field :tel %>
+    </div>
+
+    <div class="field">
+      <%= f.label :features %><br/>
+      <%= f.text_field :features %>
+    </div>
+
+    <div class="field">
+      <%= f.label :num_of_sheets %><br/>
+      <%= f.number_field :num_of_sheets %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+
+  <h3>Delete Salon</h3>
+  <p><%= button_to "Delete Salon", admin_salon_path, data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+  <%= link_to "Back", admin_salon_path %>
+</main>

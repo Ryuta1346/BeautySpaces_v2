@@ -1,0 +1,68 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+AllCops:
+  TargetRubyVersion: 2.5.1
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'Gemfile'
+    - 'lib/tasks/_force_reload.rake'
+
+Layout/EmptyLines:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Style/NumericLiteralPrefix:
+  Exclude:
+    - 'spec/factories/posts.rb'
+    - 'spec/factories/users.rb'
+
+Lint/ShadowingOuterLocalVariable:
+  Exclude:
+    - 'spec/rails_helper.rb'
+
+Airbnb/DefaultScope:
+  Enabled: false
+
+Layout/IndentationWidth:
+  Exclude:
+    - 'app/models/salon.rb'
+    - 'app/controllers/*'
+    - 'app/controllers/admin/*'
+
+Layout/IndentationConsistency:
+  Enabled: false
+
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: false
+
+Layout/TrailingBlankLines:
+  Enabled: false
+
+Layout/SpaceAroundOperators:
+  Enabled: false
+
+Style/BlockComments:
+  Enabled: false
+
+Layout/EmptyLineBetweenDefs:
+  Enabled: false
+
+Layout/TrailingWhitespace:
+  Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Enabled: false
+
+Airbnb/OptArgParameters:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
