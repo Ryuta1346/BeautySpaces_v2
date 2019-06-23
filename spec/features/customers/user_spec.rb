@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Customers::Users", type: :feature do
   let!(:prefecture1) { create(:prefecture) }
+  let!(:category1) { create(:category) }
   let(:user) { create(:user, prefecture: prefecture1) }
+  let(:salon) { create(:salon, prefecture: prefecture1, category_id: category1) }
 
   scenario 'sign up for User' do
     visit root_path
@@ -24,7 +26,7 @@ RSpec.feature "Customers::Users", type: :feature do
     expect(page).to have_content "Name: Taro Yamada"
   end
 
-  scenario 'log in for User' do
+  scenario 'login for User' do
     visit root_path
     click_on 'Sign_in'
     fill_in 'Email', with: user.email
@@ -41,5 +43,13 @@ RSpec.feature "Customers::Users", type: :feature do
     click_button 'Log in'
     expect(page).to have_current_path new_customer_session_path
     expect(page).to have_content "Invalid Email or password."
+  end
+
+  scenario 'deny to access to /mypage for another customer' do
+    sign_in salon
+    visit admin_salon_path
+    expect(page).to have_current_path admin_salon_path
+    visit user_path
+    expect(page).to have_current_path root_path
   end
 end
