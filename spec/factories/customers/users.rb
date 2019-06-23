@@ -6,7 +6,7 @@ FactoryBot.define do
     password_confirmation { 'foobar' }
     sequence(:tel) { |n| "00000000#{n}00" }
     association :prefecture
+    city { 'String' }
     address1 { 'String' }
-    address2 { 'String' }
   end
 end

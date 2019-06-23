@@ -11,7 +11,7 @@ FactoryBot.define do
     closing_time { '22:00' }
     association :category
     association :prefecture
+    city { 'String' }
     address1 { 'String' }
-    address2 { 'String' }
   end
 end

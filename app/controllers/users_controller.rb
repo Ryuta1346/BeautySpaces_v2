@@ -1,20 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, expect: [:index]
+
+  def index
+    @users = User.all
+  end
 
   def show
-  end
-
-  def edit
-  end
-
-  def update
-    if @user.update_attributes!(user_params)
-      flash[:success] = "情報を変更しました"
-      redirect_to user_url
-    else
-      flash[:danger] = "情報の変更に失敗しました"
-      render user_path
-    end
   end
 
   private
