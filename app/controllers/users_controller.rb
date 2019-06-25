@@ -20,7 +20,6 @@ class UsersController < ApplicationController
                                    :birth_of_year,
                                    :prefecture_id,
                                    :address1,
-                                   :address2
-      )
+                                   :address2)
     end
 end
