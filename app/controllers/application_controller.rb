@@ -4,12 +4,12 @@ class ApplicationController < ActionController::Base
   protected
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :type])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :type, :tel, :prefecture_id, :city, :address1])
     end
 
     def after_sign_in_path_for(customer)
       return admin_salon_path if customer.class == Salon
       return admin_stylist_path if customer.class == Stylist
-      return user_path(customer) if customer.class == User
+      return user_path if customer.class == User
     end
 end

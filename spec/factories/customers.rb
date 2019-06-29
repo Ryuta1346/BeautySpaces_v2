@@ -1,5 +1,4 @@
 FactoryBot.define do
-  factory :customer do
-    
+  factory :customer, class: 'Customer' do
   end
 end

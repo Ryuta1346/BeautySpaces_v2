@@ -66,3 +66,12 @@ RSpec/EmptyExampleGroup:
 Airbnb/OptArgParameters:
   Exclude:
     - 'app/helpers/application_helper.rb'
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false

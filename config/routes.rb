@@ -2,11 +2,15 @@ Rails.application.routes.draw do
   devise_for :customers
 
   namespace :admin do
-    resource :salon, only:[:show, :edit, :update]
-    resource :stylist, only:[:show, :edit, :update]
+    resource :salon, only: [:show, :edit, :update]
+    resource :stylist, only: [:show, :edit, :update]
   end
 
-  resources :users, only:[:show, :edit, :update]
+  scope module: :admin do
+    resource :user, only: [:show, :edit, :update], path: '/mypage'
+  end
+
+  resources :users, only: [:show, :index]
 
   root 'top#home'
   get '/about', to: 'top#about'
