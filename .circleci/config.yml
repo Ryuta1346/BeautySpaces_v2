@@ -58,9 +58,10 @@ jobs: # ステップの集合
             bin/rspec
 
       - run:
-          name: rubocopを実行
-          commamd: |
+          name: rubocop を実行
+          command: |
             bundle exec rubocop
+
 
       # タイミング解析のテスト結果を保存します
 
