@@ -53,9 +53,14 @@ jobs: # ステップの集合
           command: bin/rails db:schema:load --trace
 
       - run:
-          name: RSpec を並列実行
+          name: RSpec を実行
           command: |
             bin/rspec
+
+      - run:
+          name: rubocopを実行
+          commamd: |
+            bundle exec rubocop
 
       # タイミング解析のテスト結果を保存します
 
