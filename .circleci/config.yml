@@ -55,11 +55,7 @@ jobs: # ステップの集合
       - run:
           name: RSpec を並列実行
           command: |
-            bundle exec rspec --profile 10 \
-                              --format RspecJunitFormatter \
-                              --out test_results/rspec.xml \
-                              --format progress \
-                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+            bin/rspec
 
       # タイミング解析のテスト結果を保存します
 
