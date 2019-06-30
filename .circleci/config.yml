@@ -1,5 +1,3 @@
-
-
 version: 2 # CircleCI 2.0 を使用します
 jobs: # ステップの集合
   build: # Workflows を使用しない実行では、エントリポイントとして `build` ジョブが必要
