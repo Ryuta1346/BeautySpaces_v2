@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :customers
 
   namespace :admin do
-    resource :salon, only: [:show, :edit, :update]
+    resource :salon, only: [:show, :edit, :update] do
+      resources :reservations, except: [:new], controller: '/admin/salons/reservations'
+    end
     resource :stylist, only: [:show, :edit, :update]
   end
 

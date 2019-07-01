@@ -39,6 +39,8 @@ module BeautySpaces
     end
 
     config.autoload_paths += Dir["#{config.root}/app/models/**/"]
+    config.autoload_paths += Dir["#{config.root}/app/controllers/**/"]
+
 
     config.generators.template_engine = :slim
   end
