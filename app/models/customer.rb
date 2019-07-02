@@ -1,5 +1,7 @@
 class Customer < ApplicationRecord
   # belongs_to :category
+  has_many :salon_reservations, class_name: "Salons::Reservation"
+
   belongs_to :prefecture
 
   VALID_PHONE_REGEX = /\A\d{10,11}\z/
