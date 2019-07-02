@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_142948) do
+ActiveRecord::Schema.define(version: 2019_07_02_114505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +66,20 @@ ActiveRecord::Schema.define(version: 2019_07_01_142948) do
     t.index ["customer_id"], name: "index_salons_reservations_on_customer_id"
   end
 
+  create_table "stylists_reservations", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.datetime "reservation_time"
+    t.time "operating_time"
+    t.string "activity_scope"
+    t.text "memo"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_stylists_reservations_on_customer_id"
+  end
+
   add_foreign_key "customers", "categories"
   add_foreign_key "customers", "prefectures"
   add_foreign_key "salons_reservations", "customers"
+  add_foreign_key "stylists_reservations", "customers"
 end

@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     resource :salon, only: [:show, :edit, :update] do
       resources :reservations, except: [:new], controller: '/admin/salons/reservations'
     end
-    resource :stylist, only: [:show, :edit, :update]
+
+    resource :stylist, only: [:show, :edit, :update] do
+      resources :reservations, except: [:new], controller: '/admin/stylists/reservations'
+    end
   end
 
   scope module: :admin do
