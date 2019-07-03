@@ -2,7 +2,7 @@ class Admin::SalonsController < Admin::Base
   before_action :set_current_salon
 
   def show
-    @reservation = @salon.salon_reservations.build
+    @reservation = @salon.reservations.build
   end
 
   def edit

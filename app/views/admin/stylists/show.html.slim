@@ -22,3 +22,17 @@ br
 |  Features: 
 = @stylist.features
 br
+
+
+br
+= link_to 'Reservations', admin_salon_reservations_path
+br
+
+= form_for(@reservation, url: admin_stylist_reservations_path) do |f|
+  / = render 'shared/error_messages', object: f.object
+
+  .field
+    = f.label :時間
+    = f.datetime_select :reservation_time, minute_step: 15
+
+  = f.submit '登録'

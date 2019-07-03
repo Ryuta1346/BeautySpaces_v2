@@ -1,5 +1,5 @@
-module Salon
+module Stylists
   def self.table_name_prefix
-    'salon_'
+    'stylists_'
   end
 end
