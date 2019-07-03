@@ -1,7 +1,7 @@
 class CreateCustomers < ActiveRecord::Migration[5.2]
   def change
     create_table :customers do |t|
-      t.string :type, default: false, null: false
+      t.string :type, null: false
       t.string :name
       t.string :tel
       t.references :prefecture, foreign_key: true
