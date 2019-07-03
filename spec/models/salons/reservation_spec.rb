@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Salons::Reservation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    it { is_expected.to belong_to(:customer) }
+    it { is_expected.to validate_presence_of :reservation_time }
+    it { is_expected.to validate_presence_of :operation_time }
+  end
 end
