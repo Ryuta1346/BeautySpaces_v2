@@ -5,7 +5,7 @@ class CreateSalonsReservations < ActiveRecord::Migration[5.2]
       t.datetime :reservation_time
       t.time :operation_time
       t.text :memo
-      t.boolean :status
+      t.boolean :status, default: false, null:false
 
       t.timestamps
     end

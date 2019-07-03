@@ -6,7 +6,7 @@ class CreateStylistsReservations < ActiveRecord::Migration[5.2]
       t.time :operating_time
       t.string :activity_scope
       t.text :memo
-      t.boolean :status
+      t.boolean :status, default: false, null:false
 
       t.timestamps
     end
