@@ -2,7 +2,7 @@ class Admin::StylistsController < Admin::Base
   before_action :set_current_stylist
 
   def show
-    @reservation = @stylist.reservations.build
+    @reservation = @stylist.stylist_reservations.build
   end
 
   def edit

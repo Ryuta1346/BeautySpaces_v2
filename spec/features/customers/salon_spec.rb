@@ -53,4 +53,12 @@ RSpec.feature "Customers::Salons", type: :feature do
     visit admin_salon_path
     expect(page).to have_current_path root_path
   end
+
+  scenario 'registers the reservation which can be accepts' do
+    sign_in salon
+    visit root_path
+    # within('.salon_form') do
+    #   select '2019', from: 'salons_reservation_reservation_time_1i'
+    # end
+  end
 end
