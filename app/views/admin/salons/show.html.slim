@@ -32,12 +32,4 @@ br
 = link_to 'Reservations', admin_salon_reservations_path
 br
 
-.salon_form
-= form_for(@reservation, url: admin_salon_reservations_path) do |f|
-  = render 'shared/error_messages', object: f.object
-
-  .field
-    = f.label :予約可能日時
-    = f.datetime_select :reservation_time, minute_step: 15
-
-  = f.submit '登録'
+= render 'admin/salons/reservations/salon_form'

@@ -54,11 +54,12 @@ RSpec.feature "Customers::Salons", type: :feature do
     expect(page).to have_current_path root_path
   end
 
-  scenario 'registers the reservation which can be accepts' do
-    sign_in salon
-    visit root_path
-    # within('.salon_form') do
-    #   select '2019', from: 'salons_reservation_reservation_time_1i'
-    # end
-  end
+  # scenario 'registers the reservation which can be accepts' do
+  #   sign_in salon
+  #   visit root_path
+  #   # datetime_selectのテストがselectではできないようなので、一旦飛ばし
+  #   # fill_in '施術可能時間', with: '60'
+  #   # fill_in '備考', with: ""
+  # end
 end
+
