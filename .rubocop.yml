@@ -37,7 +37,7 @@ Layout/IndentationWidth:
   Exclude:
     - 'app/models/salon.rb'
     - 'app/controllers/*'
-    - 'app/controllers/admin/*'
+    - 'app/controllers/admin/**/*'
 
 Layout/IndentationConsistency:
   Enabled: false
