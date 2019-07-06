@@ -3,6 +3,7 @@ class Admin::StylistsController < Admin::Base
 
   def show
     @reservation = @stylist.stylist_reservations.build
+    @reservation_index = @stylist.stylist_reservations.all
   end
 
   def edit
