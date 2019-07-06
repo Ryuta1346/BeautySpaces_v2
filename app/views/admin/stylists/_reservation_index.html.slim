@@ -1,5 +1,8 @@
-- @reservation_index.each do |r|
+- @reservation_index.each.with_index(1) do |r, i|
   tr
+    td
+      = i
+      | .
     td
       = r.reservation_time
     td

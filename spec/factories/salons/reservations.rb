@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :salons_reservation, class: 'Salons::Reservation' do
     association :customer
-    reservation_time { "2019-07-01 23:29:48" }
-    operation_time { "2019-07-01 23:29:48" }
+    sequence(:reservation_time) { |n| "2019-0#{12 - n}-01 12:00:00" }
+    operation_time { 60 }
     memo { "MyText" }
     status { false }
   end

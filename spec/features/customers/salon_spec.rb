@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.feature "Customers::Salons", type: :feature do
   let!(:category1) { create(:category) }
   let!(:prefecture1) { create(:prefecture) }
-  let(:salon) { create(:salon, category_id: category1, prefecture: prefecture1) }
+  let!(:salon) { create(:salon, category_id: category1, prefecture: prefecture1) }
   let(:user) { create(:user, prefecture: prefecture1) }
+  let!(:reservation1) { create(:salons_reservation, customer: salon) }
+  let!(:reservation2) { create(:salons_reservation, customer: salon) }
 
   scenario 'sign up for Admin_Salon' do
     visit root_path
@@ -77,6 +79,14 @@ RSpec.feature "Customers::Salons", type: :feature do
     click_on '登録'
     expect(page).to have_content '予約可能時間の登録に失敗しました'
     expect(page).to have_current_path admin_salon_path
+  end
+
+  scenario 'sort reservations list in descending order' do
+    sign_in salon
+    visit admin_salon_path
+    # 降順で並べ替えられているか確認
+    expect(page).to have_content "1.#{reservation2.reservation_time}"
+    expect(page).to have_content "2.#{reservation1.reservation_time}"
   end
 end
 
