@@ -5,8 +5,8 @@ RSpec.feature "Customers::Salons", type: :feature do
   let!(:prefecture1) { create(:prefecture) }
   let!(:salon) { create(:salon, category_id: category1, prefecture: prefecture1) }
   let(:user) { create(:user, prefecture: prefecture1) }
-  let!(:reservation1) { create(:salons_reservation, customer: salon) }
-  let!(:reservation2) { create(:salons_reservation, customer: salon) }
+  let!(:reservation1) { create(:salons_reservation, customer: salon, reservation_time: "2019-08-01 12:00:00") }
+  let!(:reservation2) { create(:salons_reservation, customer: salon, reservation_time: "2019-07-01 12:00:00") }
 
   scenario 'sign up for Admin_Salon' do
     visit root_path
