@@ -66,7 +66,17 @@ RSpec.feature "Customers::Salons", type: :feature do
     fill_in 'salons_reservation[memo]', with: "あいうえお"
     click_on '登録'
     expect(page).to have_current_path admin_salon_path
+    expect(page).to have_content '予約可能時間の登録に成功しました'
     expect(page).to have_content "2019-08-10 11:15:00 UTC60あいうえお"
+  end
+
+  scenario 'registers with invalid information' do
+    sign_in salon
+    visit admin_salon_path
+    fill_in 'salons_reservation[operation_time]', with: ''
+    click_on '登録'
+    expect(page).to have_content '予約可能時間の登録に失敗しました'
+    expect(page).to have_current_path admin_salon_path
   end
 end
 

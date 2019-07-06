@@ -8,13 +8,13 @@ class Admin::Salons::ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = @salon.salon_reservations.create(salon_reservation_params)
+    @reservation = @salon.salon_reservations.build(salon_reservation_params)
     if @reservation.save
-      flash[:success] = "登録に成功しました"
+      flash[:success] = "予約可能時間の登録に成功しました"
       redirect_to admin_salon_url
     else
-      flash[:danger] = "登録に失敗しました"
-      render admin_salon_path
+      flash[:danger] = "予約可能時間の登録に失敗しました"
+      redirect_to admin_salon_url
     end
   end
 
