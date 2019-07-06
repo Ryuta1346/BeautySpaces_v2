@@ -3,8 +3,11 @@ require 'rails_helper'
 RSpec.feature "Customers::Stylists", type: :feature do
   let!(:category1) { create(:category) }
   let!(:prefecture1) { create(:prefecture) }
-  let(:stylist) { create(:stylist, category_id: category1, prefecture: prefecture1) }
+  let!(:stylist) { create(:stylist, category_id: category1, prefecture: prefecture1) }
   let(:user) { create(:user, prefecture: prefecture1) }
+  let!(:reservation1) { create(:stylists_reservation, customer: stylist, reservation_time: "2019-08-01 12:00:00") }
+  let!(:reservation2) { create(:stylists_reservation, customer: stylist, reservation_time: "2019-07-01 12:00:00") }
+
 
   scenario 'sign up for Admin_Stylist' do
     visit root_path
@@ -70,15 +73,11 @@ RSpec.feature "Customers::Stylists", type: :feature do
     expect(page).to have_content "2019-08-10 11:15:00 UTC渋谷区道玄坂60あいうえお"
   end
 
-  # scenario 'registers invalid reservation with reservation_time, operation_time, activity_scope blank' do
-  #   sign_in stylist
-  #   visit admin_stylist_path
-  #   within '#new_stylists_reservation > div:nth-child(3)' do
-  #     fill_in 'stylists_reservation[activity_scope]', with: ''
-  #     fill_in 'stylists_reservation[operation_time]', with: ''
-  #     click_on '登録'
-  #   end
-  #   expect(page).to have_content '予約可能時間の登録に失敗しました'
-  #   expect(page).to have_current_path admin_stylist_path
-  # end
+  scenario 'sort reservations list in descending order' do
+    sign_in stylist
+    visit admin_stylist_path
+    # 降順で並べ替えられているか確認
+    expect(page).to have_content "1.#{reservation2.reservation_time}"
+    expect(page).to have_content "2.#{reservation1.reservation_time}"
+  end
 end

@@ -4,4 +4,6 @@ class Stylists::Reservation < ApplicationRecord
   validates :reservation_time, :operation_time, :activity_scope, presence: true
   validates :status, inclusion: { in: [true, false] }
   validates :status, exclusion: { in: [nil] }
+
+  default_scope -> { order(reservation_time: :asc) }
 end
