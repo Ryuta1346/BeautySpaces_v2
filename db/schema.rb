@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_160314) do
+ActiveRecord::Schema.define(version: 2019_07_06_050705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_160314) do
   end
 
   create_table "salons_reservations", force: :cascade do |t|
-    t.bigint "customer_id"
+    t.bigint "customer_id", null: false
     t.datetime "reservation_time"
     t.text "memo"
     t.boolean "status", default: false, null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_160314) do
   end
 
   create_table "stylists_reservations", force: :cascade do |t|
-    t.bigint "customer_id"
+    t.bigint "customer_id", null: false
     t.datetime "reservation_time"
     t.time "operation_time"
     t.string "activity_scope"
