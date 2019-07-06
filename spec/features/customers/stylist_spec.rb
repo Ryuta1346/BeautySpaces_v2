@@ -52,4 +52,37 @@ RSpec.feature "Customers::Stylists", type: :feature do
     visit admin_stylist_path
     expect(page).to have_current_path root_path
   end
+
+  scenario 'registers the reservation which can be accepts' do
+    sign_in stylist
+    visit admin_stylist_path
+    select '2019', from: 'stylists_reservation_reservation_time_1i'
+    select 'August', from: 'stylists_reservation_reservation_time_2i'
+    select '10', from: 'stylists_reservation_reservation_time_3i'
+    select '11', from: 'stylists_reservation_reservation_time_4i'
+    select '15', from: 'stylists_reservation_reservation_time_5i'
+    fill_in 'stylists_reservation[activity_scope]', with: '渋谷区道玄坂'
+    fill_in 'stylists_reservation[operation_time]', with: '60'
+    fill_in 'stylists_reservation[memo]', with: "あいうえお"
+    click_on '登録'
+    expect(page).to have_current_path admin_stylist_path
+    expect(page).to have_content '予約可能時間の登録に成功しました'
+    expect(page).to have_content "2019-08-10 11:15:00 UTC60あいうえお"
+  end
+
+  scenario 'registers invalid reservation with reservation_time, operation_time, activity_scope blank' do
+    sign_in stylist
+    visit admin_stylist_path
+    select '', from: 'stylists_reservation_reservation_time_1i'
+    select '', from: 'stylists_reservation_reservation_time_2i'
+    select '', from: 'stylists_reservation_reservation_time_3i'
+    select '', from: 'stylists_reservation_reservation_time_4i'
+    select '', from: 'stylists_reservation_reservation_time_5i'
+    fill_in 'stylists_reservation[activity_scope]', with: ''
+    fill_in 'stylists_reservation[operation_time]', with: ''
+    fill_in 'stylists_reservation[memo]', with: "あいうえお"
+    click_on '登録'
+    expect(page).to have_content '予約可能時間の登録に失敗しました'
+    expect(page).to have_current_path admin_stylist_path
+  end
 end
