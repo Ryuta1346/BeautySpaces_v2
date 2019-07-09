@@ -7,7 +7,7 @@ RSpec.feature "Customers::Stylists", type: :feature do
   let(:user) { create(:user, prefecture: prefecture1) }
 
   feature 'Sign up' do
-    scenario 'sign up for Admin_Stylist' do
+    scenario 'with valid information' do
       visit root_path
       click_on 'Sign_up'
       expect {
@@ -30,7 +30,7 @@ RSpec.feature "Customers::Stylists", type: :feature do
   end
 
   feature 'Log in' do
-    scenario 'log in for Admin_Stylist' do
+    scenario 'with valid Stylist' do
       visit root_path
       click_on 'Sign_in'
       fill_in 'Email', with: stylist.email
@@ -39,7 +39,7 @@ RSpec.feature "Customers::Stylists", type: :feature do
       expect(page).to have_current_path admin_stylist_path
     end
 
-    scenario 'login with invalid information' do
+    scenario 'with invalid information' do
       visit root_path
       click_on 'Sign_in'
       fill_in 'Email', with: ""
@@ -49,7 +49,7 @@ RSpec.feature "Customers::Stylists", type: :feature do
       expect(page).to have_content "Invalid Email or password."
     end
 
-    scenario 'deny to access with user to Admin_Stylist page' do
+    scenario 'without admin information' do
       sign_in user
       visit user_path(user)
       visit admin_stylist_path
@@ -57,8 +57,8 @@ RSpec.feature "Customers::Stylists", type: :feature do
     end
   end
 
-  feature 'registers a reservation' do
-    scenario 'registers a reservation which can be accepts' do
+  feature 'registers a reservation information' do
+    scenario 'with valid information' do
       sign_in stylist
       visit admin_stylist_path
       select '2019', from: 'stylists_reservation_reservation_time_1i'
@@ -72,15 +72,15 @@ RSpec.feature "Customers::Stylists", type: :feature do
       click_on '登録'
       expect(page).to have_current_path admin_stylist_path
       expect(page).to have_content '予約可能時間の登録に成功しました'
-      expect(page).to have_content "2019-08-10 11:15:00 UTC渋谷区道玄坂60あいうえお"
+      expect(page).to have_content "1.8月10日 土曜日 11:15 渋谷区道玄坂60分あいうえお"
     end
   end
 
-  feature 'display the reservation list' do
+  feature 'display reservation information' do
     let!(:reservation1) { create(:stylists_reservation, customer: stylist, reservation_time: "2019-08-01 12:00:00") }
     let!(:reservation2) { create(:stylists_reservation, customer: stylist, reservation_time: "2019-07-01 12:00:00") }
 
-    scenario 'sort reservations list in descending order' do
+    scenario 'in descending order on top-page' do
       sign_in stylist
       visit admin_stylist_path
       # 降順で並べ替えられているか確認
