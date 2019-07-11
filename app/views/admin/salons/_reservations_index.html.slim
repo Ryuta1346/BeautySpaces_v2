@@ -1,0 +1,12 @@
+- @reservation_index.each.with_index(1) do |r, i|
+  tr
+    td
+      = i
+      | .
+    td
+      = reservation(r.reservation_time)
+    td
+      = operation(r.operation_time)
+    td
+      = r.memo
+    br

@@ -2,6 +2,8 @@ class Admin::SalonsController < Admin::Base
   before_action :set_current_salon
 
   def show
+    @reservation = @salon.salon_reservations.build
+    @reservation_index = @salon.salon_reservations.all
   end
 
   def edit

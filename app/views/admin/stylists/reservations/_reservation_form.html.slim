@@ -1,0 +1,19 @@
+= form_for(@reservation, url: admin_stylist_reservations_path) do |f|
+  = render 'shared/error_messages', object: f.object
+
+  .field
+    = f.label :予約可能日時
+    = f.datetime_select :reservation_time, minute_step: 5
+
+  .field
+    = f.label :施術可能地域
+    = f.text_field :activity_scope, placeholder: "例) 渋谷区道玄坂"
+
+  .field
+    = f.label :施術時間
+    = f.number_field :operation_time, step: 5
+
+  .field
+    = f.label :備考
+    = f.text_area :memo, size: "50x10"
+  = f.submit '登録'

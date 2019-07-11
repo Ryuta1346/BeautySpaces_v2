@@ -2,6 +2,8 @@ class Admin::StylistsController < Admin::Base
   before_action :set_current_stylist
 
   def show
+    @reservation = @stylist.stylist_reservations.build
+    @reservation_index = @stylist.stylist_reservations.all
   end
 
   def edit
