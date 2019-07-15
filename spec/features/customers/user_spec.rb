@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.feature "Customers::Users", type: :feature do
   let!(:prefecture1) { create(:prefecture) }
   let!(:category1) { create(:category) }
-  let(:user) { create(:user, prefecture: prefecture1) }
-  let(:salon) { create(:salon, prefecture: prefecture1, category_id: category1) }
+  let(:user) { create(:user, prefecture: prefecture1, category: category1) }
+  let(:salon) { create(:salon, prefecture: prefecture1, category: category1) }
 
   scenario 'sign up for User' do
     visit root_path
@@ -15,7 +15,7 @@ RSpec.feature "Customers::Users", type: :feature do
       fill_in 'customer_password', with: 'foobar'
       fill_in 'customer_password_confirmation', with: 'foobar'
       fill_in 'customer_tel', with: '00011111113'
-      # select '東京都', from: '都道府県'
+      select '東京都', from: 'customer_prefecture_id'
       fill_in 'customer_city', with: '渋谷区'
       fill_in 'customer_address1', with: '道玄坂0-0'
       select 'User', from: 'customer_type'
