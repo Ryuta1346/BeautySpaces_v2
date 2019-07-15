@@ -7,7 +7,7 @@ RSpec.feature "Customers::Users", type: :feature do
   let(:user) { create(:user, prefecture: prefecture1, category: category2) }
   let(:salon) { create(:salon, prefecture: prefecture1, category: category1) }
 
-  scenario 'sign up for User' do
+  scenario 'sign up for valid user' do
     visit root_path
     click_on 'Sign_up'
     expect {
@@ -23,7 +23,6 @@ RSpec.feature "Customers::Users", type: :feature do
       select 'User', from: 'customer_type'
       click_button 'Sign up'
     }.to change(User, :count).by(1)
-
     expect(page).to have_content "Welcome! You have signed up successfully."
     expect(page).to have_content "Name: Taro Yamada"
   end

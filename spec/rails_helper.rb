@@ -73,4 +73,10 @@ RSpec.configure do |config|
       end
     end
   end
+
+  config.after do |example|
+    if example.metadata[:type] == :feature and example.exception.present? and example.metadata[:open_on_error] == true
+      save_and_open_page
+    end
+  end
 end
