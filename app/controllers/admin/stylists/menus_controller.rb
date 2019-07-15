@@ -1,6 +1,6 @@
 class Admin::Stylists::MenusController < ApplicationController
   before_action :set_current_stylist
-  before_action :set_menu, except: [:index]
+  before_action :set_menu, except: [:index, :create]
 
   def index
     @menu = @stylist.menus.build
@@ -33,7 +33,7 @@ class Admin::Stylists::MenusController < ApplicationController
 
   def destroy
     if @menu.destroy
-      flash[:success] = "予約をキャンセルしました"
+      flash[:success] = "メニュー:#{@menu.name}を削除しました"
       redirect_to admin_stylist_menus_url
     end
   end

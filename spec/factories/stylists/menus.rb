@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :stylists_menu, class: 'Stylists::Menu' do
-    customer { nil }
+    association :customer
     name { "MyString" }
-    price { 1 }
-    operation_time { 1 }
+    price { 5980 }
+    operation_time { 60 }
     content { "MyString" }
     sales_copy { "MyString" }
     memo { "MyString" }

@@ -1,6 +1,6 @@
 h2
   = @menu.name
-  | の情報をを編集する
+  | の情報を編集する
 
 = form_for(@menu, url: admin_stylist_menu_path) do |f|
   = render 'shared/error_messages', object: f.object
@@ -29,3 +29,5 @@ h2
     = f.label :備考
     = f.text_area :memo
   = f.submit '編集'
+
+= link_to 'Stylistトップページ', admin_stylist_path

@@ -4,12 +4,14 @@ RSpec.feature "Stylists::Menus", type: :feature do
   let!(:category1) { create(:category) }
   let!(:prefecture1) { create(:prefecture) }
   let!(:stylist) { create(:stylist, category_id: category1, prefecture: prefecture1) }
-  let!(:menu) { create(:menu, customer: stylist) }
+
+  before do
+    sign_in stylist
+    visit admin_stylist_menus_path
+  end
 
   feature 'create new menu' do
     scenario 'with valid information' do
-      sign_in stylist
-      visit admin_stylist_menus_path
       fill_in 'stylists_menu[name]', with: 'お得なカット+カラー+トリートメントセット'
       fill_in 'stylists_menu[price]', with: '8990'
       fill_in 'stylists_menu[operation_time]', with: '120'
@@ -23,8 +25,6 @@ RSpec.feature "Stylists::Menus", type: :feature do
     end
 
     scenario 'with brank menu_name' do
-      sign_in stylist
-      visit admin_stylist_menus_path
       fill_in 'stylists_menu[name]', with: ''
       fill_in 'stylists_menu[price]', with: '8990'
       fill_in 'stylists_menu[operation_time]', with: '120'
