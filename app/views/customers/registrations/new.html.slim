@@ -24,9 +24,13 @@ h2
     br
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .field
+    = f.label :category
+    br
+    = f.collection_select :category_id, Category.all, :id, :name
+  .field
     = f.label :電話番号
     br
-    = f.telephone_field :tel, size:10, maxlength:11
+    = f.telephone_field :tel, size: 10, maxlength: 11
     br
 
   .field

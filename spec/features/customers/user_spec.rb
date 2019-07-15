@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Customers::Users", type: :feature do
   let!(:prefecture1) { create(:prefecture) }
-  let!(:category1) { create(:category) }
-  let(:user) { create(:user, prefecture: prefecture1, category: category1) }
+  let!(:category1) { create(:category, name:'ヘアサロン') }
+  let!(:category2) { create(:category, name:'一般利用') }
+  let(:user) { create(:user, prefecture: prefecture1, category: category2) }
   let(:salon) { create(:salon, prefecture: prefecture1, category: category1) }
 
   scenario 'sign up for User' do
@@ -14,6 +15,7 @@ RSpec.feature "Customers::Users", type: :feature do
       fill_in 'customer_email', with: 'foo@example.com'
       fill_in 'customer_password', with: 'foobar'
       fill_in 'customer_password_confirmation', with: 'foobar'
+      select "一般利用", from: 'customer_category_id'
       fill_in 'customer_tel', with: '00011111113'
       select '東京都', from: 'customer_prefecture_id'
       fill_in 'customer_city', with: '渋谷区'

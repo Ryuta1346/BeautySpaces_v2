@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature "Customers::Salons", type: :feature do
-  let!(:category1) { create(:category, name: 'Salon') }
-  let!(:category2) { create(:category, name: 'User') }
+  let!(:category1) { create(:category, name: 'ヘアサロン') }
+  let!(:category2) { create(:category, name: '一般利用') }
   let!(:prefecture1) { create(:prefecture) }
   let!(:salon) { create(:salon, category: category1, prefecture: prefecture1) }
   let(:user) { create(:user, prefecture: prefecture1, category: category2) }
@@ -16,6 +16,7 @@ RSpec.feature "Customers::Salons", type: :feature do
         fill_in 'customer_email', with: 'foo@example.com'
         fill_in 'customer_password', with: 'foobar'
         fill_in 'customer_password_confirmation', with: 'foobar'
+        select "ヘアサロン", from: 'customer_category_id'
         fill_in 'customer_tel', with: '00011111111'
         select "東京都", from: "customer_prefecture_id"
         fill_in 'customer_city', with: '渋谷区'
