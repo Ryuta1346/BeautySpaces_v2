@@ -78,3 +78,6 @@ Style/MutableConstant:
 
 Airbnb/SimpleModifierConditional:
   Enabled: false
+
+Lint/Debugger:
+  Enabled: false
