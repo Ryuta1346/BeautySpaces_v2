@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    namespace :stylists do
-      get 'menus/index'
-      get 'menus/show'
-      get 'menus/edit'
-    end
-  end
   devise_for :customers
 
   namespace :admin do
@@ -15,6 +8,7 @@ Rails.application.routes.draw do
 
     resource :stylist, only: [:show, :edit, :update] do
       resources :reservations, except: [:new], controller: '/admin/stylists/reservations'
+      resources :menus, except: [:new], controller: '/admin/stylists/menus'
     end
   end
 

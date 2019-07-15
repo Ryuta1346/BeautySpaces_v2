@@ -1,2 +1,26 @@
 h1 Admin::Stylists::Menus#index
-p Find me in app/views/admin/stylists/menus/index.html.slim
+
+= render 'form'
+
+- @menus.each.with_index(1) do |r, i|
+  tr
+    td
+      = i
+      | .
+    td
+      = r.name
+    td
+      = "#{r.price}円 "
+    td
+      = "#{r.operation_time}分 "
+    td
+      = r.content
+    td
+      = r.sales_copy
+    td
+      = r.memo
+    td
+      = link_to '編集'
+    td
+      = link_to 'delete'
+    br

@@ -9,7 +9,7 @@ RSpec.feature "Stylists::Menus", type: :feature do
   feature 'create new menu' do
     scenario 'with valid information' do
       sign_in stylist
-      visit admin_stylist_path
+      visit admin_stylist_menus_path
       fill_in 'stylists_menu[name]', with: 'お得なカット+カラー+トリートメントセット'
       fill_in 'stylists_menu[price]', with: '8990'
       fill_in 'stylists_menu[operation_time]', with: '120'
@@ -24,7 +24,7 @@ RSpec.feature "Stylists::Menus", type: :feature do
 
     scenario 'with brank menu_name' do
       sign_in stylist
-      visit admin_stylist_path
+      visit admin_stylist_menus_path
       fill_in 'stylists_menu[name]', with: ''
       fill_in 'stylists_menu[price]', with: '8990'
       fill_in 'stylists_menu[operation_time]', with: '120'
