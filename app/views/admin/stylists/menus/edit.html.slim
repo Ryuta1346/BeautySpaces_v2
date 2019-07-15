@@ -1,2 +1,31 @@
-h1 Admin::Stylists::Menus#edit
-p Find me in app/views/admin/stylists/menus/edit.html.slim
+h2
+  = @menu.name
+  | の情報をを編集する
+
+= form_for(@menu, url: admin_stylist_menu_path) do |f|
+  = render 'shared/error_messages', object: f.object
+
+  .field
+    = f.label :メニュー名
+    = f.text_field :name
+
+  .field
+    = f.label :価格
+    = f.number_field :price
+
+  .field
+    = f.label :メニュー内容
+    = f.text_field :content, placeholder: "例) カット+カラー"
+
+  .field
+    = f.label :セールスコピー
+    = f.text_area :sales_copy, placeholder: "例) カットとこだわりの髪なじみの良いカラーで美しい髪型に"
+
+  .field
+    = f.label :施術時間
+    = f.number_field :operation_time, step: 5
+
+  .field
+    = f.label :備考
+    = f.text_area :memo
+  = f.submit '編集'
