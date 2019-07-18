@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 2019_07_11_150959) do
 
   create_table "stylists_menus", force: :cascade do |t|
     t.bigint "customer_id"
-    t.string "name"
-    t.integer "price"
-    t.integer "operation_time"
-    t.string "content"
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.integer "operation_time", null: false
+    t.string "content", null: false
     t.string "sales_copy"
     t.string "memo"
     t.datetime "created_at", null: false
