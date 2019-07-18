@@ -20,7 +20,7 @@ class Admin::UsersController < Admin::Base
   private
 
     def set_current_user
-      redirect_to root_url if current_customer.nil? || !current_customer.type['User']
+      redirect_to root_url unless current_customer&.correct_customer?('User')
       @user ||= current_customer
     end
 

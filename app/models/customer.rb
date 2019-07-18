@@ -22,4 +22,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum type: { User: 0, Salon: 1, Stylist: 2 }
+
+  def correct_customer?(name)
+    true if type == type[name]
+  end
 end
