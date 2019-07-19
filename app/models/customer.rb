@@ -24,6 +24,6 @@ class Customer < ApplicationRecord
   enum type: { User: 0, Salon: 1, Stylist: 2 }
 
   def correct_customer?(name)
-    true if type == type[name]
+    type == type[name]
   end
 end
