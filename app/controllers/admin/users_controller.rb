@@ -20,7 +20,7 @@ class Admin::UsersController < Admin::Base
   private
 
     def set_current_user
-      redirect_to root_url unless current_customer.type['User']
+      redirect_to root_url unless current_customer&.correct_customer?('User')
       @user ||= current_customer
     end
 
@@ -29,7 +29,7 @@ class Admin::UsersController < Admin::Base
                                    :tel,
                                    :birth_of_year,
                                    :prefecture_id,
-                                   :address1,
-                                   :address2)
+                                   :city,
+                                   :address1)
     end
 end

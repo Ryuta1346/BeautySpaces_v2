@@ -1,0 +1,45 @@
+h1 Admin::Stylists::Menus#index
+
+= render 'form'
+
+div[style="margin-top: 30px;"]
+  h2
+    | メニュー一覧
+  .table-responsive
+  table.table.table-striped.table-sm
+    thead
+    tr
+      th
+        | メニュー名
+      th
+        | 価格
+      th
+        | セールスコピー
+      th
+        | 施術時間
+      th
+        | 内容
+      th
+        | メモ
+
+    tbody
+    - @menus.each do |b|
+      tr
+        td
+          = b.name
+        td
+          = b.price
+          |円
+        td
+          = b.sales_copy
+        td
+          = b.operation_time
+          |分
+        td
+          = b.content
+        td
+          = b.memo
+        td
+          = link_to '編集', edit_admin_stylist_menu_path(b)
+        td
+          = link_to '削除', admin_stylist_menu_path(b), method: :delete, data: { confirm: 'Are you sure?' }

@@ -75,3 +75,9 @@ Style/PercentLiteralDelimiters:
 
 Style/MutableConstant:
   Enabled: false
+
+Airbnb/SimpleModifierConditional:
+  Enabled: false
+
+Lint/Debugger:
+  Enabled: false

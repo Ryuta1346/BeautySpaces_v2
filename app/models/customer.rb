@@ -1,9 +1,10 @@
 class Customer < ApplicationRecord
-  # belongs_to :category
   has_many :salon_reservations, class_name: "Salons::Reservation"
   has_many :stylist_reservations, class_name: "Stylists::Reservation"
+  has_many :menus, class_name: "Stylists::Menu"
 
   belongs_to :prefecture
+  belongs_to :category
 
   VALID_PHONE_REGEX = /\A\d{10,11}\z/
   VALID_TYPES       = %w[User Salon Stylist]
@@ -21,4 +22,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum type: { User: 0, Salon: 1, Stylist: 2 }
+
+  def correct_customer?(name)
+    type == type[name]
+  end
 end

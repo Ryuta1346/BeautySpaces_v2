@@ -1,5 +1,6 @@
 h1
-  | Admin::Salons#show
+  = @salon.name
+
 = link_to 'サロン情報編集', edit_admin_salon_path
 br
 = link_to 'Email/パスワード変更', edit_customer_registration_path
@@ -10,7 +11,7 @@ br
 = @salon.name
 br
 |  Category: 
-= @salon.category_id
+= @salon.category.name
 br
 |  Prefecture: 
 = @salon.prefecture.name
@@ -21,10 +22,10 @@ br
 |  TEL: 
 = @salon.tel
 br
-|  Features: 
+|  サロン特徴:
 = @salon.features
 br
-|  Num_Of_Sheets: 
+|  座席数:
 = @salon.num_of_sheets
 br
 

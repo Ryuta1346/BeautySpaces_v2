@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     resource :stylist, only: [:show, :edit, :update] do
       resources :reservations, except: [:new], controller: '/admin/stylists/reservations'
+      resources :menus, except: [:new, :show], controller: '/admin/stylists/menus'
     end
   end
 

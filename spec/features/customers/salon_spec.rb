@@ -1,31 +1,32 @@
 require 'rails_helper'
 
-RSpec.feature "Customers::Salons", type: :feature do
-  let!(:category1) { create(:category) }
+RSpec.feature "Customers::Salons", open_on_error: true, type: :feature do
+  let!(:category1) { create(:category, name: "ヘアサロン") }
+  let!(:category2) { create(:category, name: '一般利用') }
   let!(:prefecture1) { create(:prefecture) }
-  let!(:salon) { create(:salon, category_id: category1, prefecture: prefecture1) }
-  let(:user) { create(:user, prefecture: prefecture1) }
+  let!(:salon) { create(:salon, category: category1, prefecture: prefecture1) }
+  let(:user) { create(:user, prefecture: prefecture1, category: category2) }
 
   feature 'Sign up' do
     scenario 'with valid information' do
       visit root_path
       click_on 'Sign_up'
       expect {
-        fill_in 'customer_name', with: 'ABC Salon'
-        fill_in 'customer_email', with: 'foo@example.com'
-        fill_in 'customer_password', with: 'foobar'
-        fill_in 'customer_password_confirmation', with: 'foobar'
+        fill_in 'customer[name]', with: 'AKASATANA Salon'
+        fill_in 'customer[email]', with: 'foo@example.com'
+        fill_in 'customer[password]', with: 'foobar'
+        fill_in 'customer[password_confirmation]', with: 'foobar'
+        select 'ヘアサロン', from: "customer_category_id"
         fill_in 'customer_tel', with: '00011111111'
-        # select '東京都', from: 'customer_prefecture_id'
-        fill_in 'customer_city', with: '渋谷区'
-        fill_in 'customer_address1', with: '道玄坂0-0'
-        select 'Salon', from: 'customer_type'
+        select "東京都", from: "customer_prefecture_id"
+        fill_in 'customer[city]', with: '渋谷区'
+        fill_in 'customer[address1]', with: '道玄坂0-0'
+        select 'Salon', from: 'customer[type]'
         click_button 'Sign up'
       }.to change(Salon, :count).by(1)
-
       expect(page).to have_current_path admin_salon_path
       expect(page).to have_content "Welcome! You have signed up successfully."
-      expect(page).to have_content "Name: ABC Salon"
+      expect(page).to have_content "Name: AKASATANA Salon"
     end
   end
 
@@ -59,25 +60,28 @@ RSpec.feature "Customers::Salons", type: :feature do
   end
 
   feature 'registers a reservation' do
-    scenario 'with valid information' do
+    before do
       sign_in salon
       visit admin_salon_path
-      select '2019', from: 'salons_reservation_reservation_time_1i'
-      select 'August', from: 'salons_reservation_reservation_time_2i'
-      select '10', from: 'salons_reservation_reservation_time_3i'
-      select '11', from: 'salons_reservation_reservation_time_4i'
-      select '15', from: 'salons_reservation_reservation_time_5i'
-      fill_in 'salons_reservation[operation_time]', with: '60'
-      fill_in 'salons_reservation[memo]', with: "あいうえお"
-      click_on '登録'
+    end
+
+    scenario 'with valid information' do
+      expect {
+        select '2019', from: 'salons_reservation_reservation_time_1i'
+        select 'August', from: 'salons_reservation_reservation_time_2i'
+        select '10', from: 'salons_reservation_reservation_time_3i'
+        select '11', from: 'salons_reservation_reservation_time_4i'
+        select '15', from: 'salons_reservation_reservation_time_5i'
+        fill_in 'salons_reservation[operation_time]', with: '60'
+        fill_in 'salons_reservation[memo]', with: "あいうえお"
+        click_on '登録'
+      }.to change(Salons::Reservation, :count).by(1)
       expect(page).to have_current_path admin_salon_path
       expect(page).to have_content '予約可能時間の登録に成功しました'
       expect(page).to have_content "8月10日 土曜日 11:15 60分あいうえお"
     end
 
     scenario 'with invalid information' do
-      sign_in salon
-      visit admin_salon_path
       fill_in 'salons_reservation[operation_time]', with: ''
       click_on '登録'
       expect(page).to have_content '予約可能時間の登録に失敗しました'
