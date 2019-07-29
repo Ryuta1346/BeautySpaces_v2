@@ -41,7 +41,7 @@ class Admin::Stylists::MenusController < ApplicationController
   private
 
     def set_current_stylist
-      redirect_to root_url unless current_customer.type['Stylist']
+      redirect_to root_url unless current_customer&.correct_customer?('Stylist')
       @stylist ||= current_customer
     end
 
