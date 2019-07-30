@@ -25,6 +25,7 @@ class ReservationsController < ApplicationController
   end
 
   private
+
     def set_current_user
       redirect_to root_url unless current_customer&.correct_customer?('User')
       @user ||= current_customer
@@ -32,10 +33,10 @@ class ReservationsController < ApplicationController
 
     def reservation_params
       params.require(:reservation).permit(:salons_reservation_id,
-                                   :stylists_reservation_id,
-                                   :stylists_menu_id,
-                                   :customer_id,
-                                   :memo,
-                                   :status)
+                                          :stylists_reservation_id,
+                                          :stylists_menu_id,
+                                          :customer_id,
+                                          :memo,
+                                          :status)
     end
 end
