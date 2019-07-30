@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.feature "Customers::Stylists", open_on_error: true, type: :feature do
   let!(:category1) { create(:category, name: 'ヘアサロン') }
   let!(:category2) { create(:category, name: '一般利用') }
-  let!(:prefecture1) { create(:prefecture) }
+  let!(:area1) { create(:area) }
+  let!(:prefecture1) { create(:prefecture, area: area1) }
   let!(:stylist) { create(:stylist, category: category1, prefecture: prefecture1) }
   let(:user) { create(:user, prefecture: prefecture1, category: category2) }
 

@@ -24,11 +24,14 @@ br
       = r.salons_reservation.customer.name
       |:
     td
-      = r.stylists_reservation.reservation_time
+      = "#{r.salons_reservation.customer.city}#{r.salons_reservation.customer.address1}"
+      |:
+    td
+      = reservation(r.stylists_reservation.reservation_time)
       |:
     td
       = r.stylists_menu.name
-      |:
+      |
     td
       = r.memo
     br

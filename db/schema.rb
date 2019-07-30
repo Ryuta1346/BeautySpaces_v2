@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_153518) do
+ActiveRecord::Schema.define(version: 2019_07_30_140558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -53,6 +60,9 @@ ActiveRecord::Schema.define(version: 2019_07_29_153518) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "area_id"
+    t.string "e_name"
+    t.index ["area_id"], name: "index_prefectures_on_area_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -105,6 +115,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_153518) do
 
   add_foreign_key "customers", "categories"
   add_foreign_key "customers", "prefectures"
+  add_foreign_key "prefectures", "areas"
   add_foreign_key "reservations", "customers"
   add_foreign_key "salons_reservations", "customers"
   add_foreign_key "stylists_menus", "customers"
