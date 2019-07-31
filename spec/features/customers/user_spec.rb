@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature "Customers::Users", type: :feature do
-  let!(:area1) { create(:area) }
-  let!(:prefecture1) { create(:prefecture, area: area1) }
+  let!(:region1) { create(:region) }
+  let!(:prefecture1) { create(:prefecture, region: region1) }
   let!(:category1) { create(:category, name: 'ヘアサロン') }
   let!(:category2) { create(:category, name: '一般利用') }
   let(:user) { create(:user, prefecture: prefecture1, category: category2) }

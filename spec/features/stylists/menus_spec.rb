@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Stylists::Menus", type: :feature do
   let!(:category1) { create(:category) }
-  let!(:area1) { create(:area) }
-  let!(:prefecture1) { create(:prefecture, area: area1) }
+  let!(:region1) { create(:region) }
+  let!(:prefecture1) { create(:prefecture, region: region1) }
   let!(:stylist) { create(:stylist, category: category1, prefecture: prefecture1) }
 
   before do
