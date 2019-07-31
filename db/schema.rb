@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_140558) do
+ActiveRecord::Schema.define(version: 2019_07_31_130711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
-    t.string "category_name"
+    t.string "e_name"
+    t.bigint "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["prefecture_id"], name: "index_areas_on_prefecture_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -60,9 +62,16 @@ ActiveRecord::Schema.define(version: 2019_07_30_140558) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "area_id"
+    t.bigint "region_id"
     t.string "e_name"
-    t.index ["area_id"], name: "index_prefectures_on_area_id"
+    t.index ["region_id"], name: "index_prefectures_on_region_id"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "name"
+    t.string "e_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -113,9 +122,10 @@ ActiveRecord::Schema.define(version: 2019_07_30_140558) do
     t.index ["customer_id"], name: "index_stylists_reservations_on_customer_id"
   end
 
+  add_foreign_key "areas", "prefectures"
   add_foreign_key "customers", "categories"
   add_foreign_key "customers", "prefectures"
-  add_foreign_key "prefectures", "areas"
+  add_foreign_key "prefectures", "regions"
   add_foreign_key "reservations", "customers"
   add_foreign_key "salons_reservations", "customers"
   add_foreign_key "stylists_menus", "customers"

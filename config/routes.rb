@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'regions/index'
+  get 'regions/show'
   devise_for :customers
   root 'top#home'
   get '/about', to: 'top#about'
@@ -20,8 +22,9 @@ Rails.application.routes.draw do
     resource :user, only: [:show, :edit, :update], path: '/mypage'
   end
 
-  resources :areas, only: [:show], path: '/area'
+  resources :regions, only: [:show, :index], path: '/reg'
   resources :prefectures, only: [:show, :index], path: '/pref'
+  resources :areas, only: [:show], path: '/area'
 
   resources :users, only: [:show, :index]
   resources :reservations

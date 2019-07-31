@@ -4,5 +4,6 @@ class PrefecturesController < ApplicationController
 
   def show
     @pref = Prefecture.find_by(e_name: params[:id])
+    @areas = @pref.take_place
   end
 end

@@ -1,3 +1,12 @@
 h1 Prefectures#show
-p Find me in app/views/prefectures/show.html.slim
 = @pref.name
+br
+
+- @areas.each.with_index(1) do |p, i|
+  tr
+    td
+      = i
+      | .
+    td
+      = link_to p[0], area_path(p[1])
+    br

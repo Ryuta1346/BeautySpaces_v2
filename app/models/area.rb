@@ -1,3 +1,3 @@
 class Area < ApplicationRecord
-  has_many :prefectures
+  belongs_to :prefecture
 end
