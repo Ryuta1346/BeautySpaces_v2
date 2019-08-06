@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = @user.reservations.new(reservation_params)
+    @reservation = @user.reservations.build(reservation_params)
     if @reservation.save!
       flash[:success] = "予約しました"
       redirect_to user_url

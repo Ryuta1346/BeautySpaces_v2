@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     resource :user, only: [:show, :edit, :update], path: '/mypage'
   end
 
-  resources :regions, only: [:show, :index], path: '/reg'
-  resources :prefectures, only: [:show, :index], path: '/pref'
-  resources :areas, only: [:show], path: '/area'
+  resources :regions, only: [:show, :index], path: '/reg', param: :e_name
+  resources :prefectures, only: [:show, :index], path: '/pref', param: :e_name
+  resources :areas, only: [:show], path: '/area', param: :e_name
 
   resources :users, only: [:show, :index]
   resources :reservations

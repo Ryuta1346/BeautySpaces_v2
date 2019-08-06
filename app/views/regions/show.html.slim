@@ -5,11 +5,11 @@ p Find me in app/views/regions/show.html.slim
 
 br
 
-- @prefs.each.with_index(1) do |p, i|
+- @prefs.each.with_index(1) do |area, i|
   tr
     td
       = i
       | .
     td
-      = link_to p[0], prefecture_path(p[1])
+      = link_to area.name, prefecture_path(area.e_name)
     br
