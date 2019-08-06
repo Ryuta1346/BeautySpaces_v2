@@ -3,5 +3,5 @@ class Prefecture < ApplicationRecord
   has_many :areas
   belongs_to :region
 
-  validates :name, :e_name, presence: true
+  validates :name, :en_name, presence: true
 end

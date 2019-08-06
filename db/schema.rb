@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_07_31_130711) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
-    t.string "e_name"
+    t.string "en_name"
     t.bigint "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,13 +63,13 @@ ActiveRecord::Schema.define(version: 2019_07_31_130711) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "region_id"
-    t.string "e_name"
+    t.string "en_name"
     t.index ["region_id"], name: "index_prefectures_on_region_id"
   end
 
   create_table "regions", force: :cascade do |t|
     t.string "name"
-    t.string "e_name"
+    t.string "en_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
