@@ -1,9 +1,9 @@
 h1
   = @user.name
 - if current_customer.type["User"]
-  = link_to 'ユーザー情報編集',  edit_user_path
+  = link_to 'ユーザー情報編集', edit_user_path
   = link_to 'Email/パスワード変更', edit_customer_registration_path
-  = link_to 'DELETE', destroy_customer_session_path, method: :delete, data:{confritm: "Sign out?"}
+  = link_to 'DELETE', destroy_customer_session_path, method: :delete, data: { confritm: "Sign out?" }
   br
 |  Name: 
 = @user.name
@@ -14,3 +14,40 @@ br
 |  TEL: 
 = @user.tel
 br
+
+- @reservations.each.with_index(1) do |r, i|
+  tr
+    td
+      = i
+      | .
+    td
+      = r.salons_reservation.customer.name
+      |:
+    td
+      = "#{r.salons_reservation.customer.city}#{r.salons_reservation.customer.address1}"
+      |:
+    td
+      = reservation(r.stylists_reservation.reservation_time)
+      |:
+    td
+      = r.stylists_menu.name
+      |
+    td
+      = r.memo
+    br
+
+= form_for(@reservation, url: reservations_path) do |f|
+  div
+    = f.label :サロン予約
+    br
+    = f.collection_select :salons_reservation_id, Salons::Reservation.all, :id, :reservation_time
+  div
+    = f.label :スタイリスト予約
+    br
+    = f.collection_select :stylists_reservation_id, Stylists::Reservation.all, :id, :reservation_time
+  div
+    = f.label :メニュー
+    br
+    = f.collection_select :stylists_menu_id, Stylists::Menu.all, :id, :name
+  div[style="padding-top: 20px"]
+    = f.submit '予約する', class: "btn btn-primary"

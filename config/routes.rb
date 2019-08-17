@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  get 'regions/index'
+  get 'regions/show'
   devise_for :customers
+  root 'top#home'
+  get '/about', to: 'top#about'
+  get '/help', to: 'top#help'
+  get '/contact', to: 'top#contact'
 
   namespace :admin do
     resource :salon, only: [:show, :edit, :update] do
@@ -16,11 +22,12 @@ Rails.application.routes.draw do
     resource :user, only: [:show, :edit, :update], path: '/mypage'
   end
 
-  resources :users, only: [:show, :index]
+  resources :regions, only: [:show, :index], path: '/reg', param: :e_name
+  resources :prefectures, only: [:show, :index], path: '/pref', param: :e_name
+  resources :areas, only: [:show], path: '/area', param: :e_name
 
-  root 'top#home'
-  get '/about', to: 'top#about'
-  get '/help', to: 'top#help'
-  get '/contact', to: 'top#contact'
+  resources :users, only: [:show, :index]
+  resources :reservations
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

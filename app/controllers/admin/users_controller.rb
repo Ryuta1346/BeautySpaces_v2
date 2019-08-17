@@ -2,6 +2,8 @@ class Admin::UsersController < Admin::Base
   before_action :set_current_user
 
   def show
+    @reservation  = @user.reservations.new
+    @reservations = @user.reservations.includes({ salons_reservation: :customer }, :stylists_reservation, :stylists_menu)
   end
 
   def edit

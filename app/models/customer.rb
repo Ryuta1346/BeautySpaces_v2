@@ -2,6 +2,7 @@ class Customer < ApplicationRecord
   has_many :salon_reservations, class_name: "Salons::Reservation"
   has_many :stylist_reservations, class_name: "Stylists::Reservation"
   has_many :menus, class_name: "Stylists::Menu"
+  has_many :reservations
 
   belongs_to :prefecture
   belongs_to :category

@@ -1,0 +1,12 @@
+h1 Prefectures#show
+= @pref.name
+br
+
+- @areas.each.with_index(1) do |area, i|
+  tr
+    td
+      = i
+      | .
+    td
+      = link_to area.name, area_path(area.en_name)
+    br
