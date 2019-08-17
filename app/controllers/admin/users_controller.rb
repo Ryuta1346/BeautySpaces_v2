@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::Base
 
   def show
     @reservation  = @user.reservations.new
-    @reservations = @user.reservations.includes({salons_reservation: :customer}, :stylists_reservation, :stylists_menu)
+    @reservations = @user.reservations.includes({ salons_reservation: :customer }, :stylists_reservation, :stylists_menu)
   end
 
   def edit
