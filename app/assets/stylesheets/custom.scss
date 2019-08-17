@@ -1,0 +1,74 @@
+body {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  width: 95%;
+  font-size: 12px;
+  margin: 0 auto;
+}
+
+nav {
+  width: 100%;
+  background: #000000;
+  border-bottom: 5px solid #37a29B;
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 20px 10px 0 10px;
+  }
+
+  .logo {
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    padding: 0 20px;
+    font-family: "American Typewriter";
+  }
+
+  li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #ffffff;
+  }
+
+  li a:hover {
+    background: #37a29B;
+    border-radius: 10px 10px 0 0;
+  }
+}
+
+/* トップ */
+.pageTop {
+  background-image: image_url("beauty-top.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 600px;
+  padding-top: 100px;
+  display: flex;
+
+  .search-column{
+    display: block;
+    margin: 0 auto;
+    margin-top: 300px;
+    height: 200px;
+    border: 1px solid;
+    width: 20%;
+    margin-left: 40px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+  }
+}
+
+/* リンク */
+a:hover{
+  color: #B00100;
+}
