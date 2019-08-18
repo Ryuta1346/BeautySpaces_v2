@@ -1,13 +1,20 @@
 div.pageTop
-  .search-column
-    a
-    h1
-      | "ヒト"で探す
-  .search-column
-    h1
-      | "場所"で探す
-  .search-column
-    h1
-      | "時間"で探す
+
+ul.search-contents
+  li
+    div
+      = image_tag "select-place.png"
+    .btn
+      | サロンから予約する
+  li
+    div
+      = image_tag "select-person.png"
+    .btn
+      | スタイリストから予約する
+  li
+    div
+      = image_tag "select-date.png"
+    .btn
+      | 日時から予約する
 
 
