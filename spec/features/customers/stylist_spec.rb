@@ -14,7 +14,7 @@ RSpec.feature "Customers::Stylists", open_on_error: true, type: :feature do
     end
 
     scenario 'with valid information' do
-      click_on 'Sign_up'
+      click_on '会員登録'
       expect {
         fill_in 'customer_name', with: 'Taro Yamada'
         fill_in 'customer_email', with: 'foo@example.com'
@@ -29,7 +29,6 @@ RSpec.feature "Customers::Stylists", open_on_error: true, type: :feature do
         click_button 'Sign up'
       }.to change(Stylist, :count).by(1)
       expect(page).to have_current_path admin_stylist_path
-      expect(page).to have_content "Welcome! You have signed up successfully."
       expect(page).to have_content "Name: Taro Yamada"
     end
   end
@@ -40,7 +39,7 @@ RSpec.feature "Customers::Stylists", open_on_error: true, type: :feature do
     end
 
     scenario 'with valid Stylist' do
-      click_on 'Sign_in'
+      click_on 'ログイン'
       fill_in 'Email', with: stylist.email
       fill_in 'Password', with: stylist.password
       click_button 'Log in'
@@ -48,12 +47,11 @@ RSpec.feature "Customers::Stylists", open_on_error: true, type: :feature do
     end
 
     scenario 'with invalid information' do
-      click_on 'Sign_in'
+      click_on 'ログイン'
       fill_in 'Email', with: ""
       fill_in 'Password', with: ""
       click_button 'Log in'
       expect(page).to have_current_path new_customer_session_path
-      expect(page).to have_content "Invalid Email or password."
     end
 
     scenario 'without admin information' do

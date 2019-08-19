@@ -11,7 +11,7 @@ RSpec.feature "Customers::Salons", open_on_error: true, type: :feature do
   feature 'Sign up' do
     scenario 'with valid information' do
       visit root_path
-      click_on 'Sign_up'
+      click_on '会員登録'
       expect {
         fill_in 'customer[name]', with: 'AKASATANA Salon'
         fill_in 'customer[email]', with: 'foo@example.com'
@@ -26,30 +26,28 @@ RSpec.feature "Customers::Salons", open_on_error: true, type: :feature do
         click_button 'Sign up'
       }.to change(Salon, :count).by(1)
       expect(page).to have_current_path admin_salon_path
-      expect(page).to have_content "Welcome! You have signed up successfully."
-      expect(page).to have_content "Name: AKASATANA Salon"
+      expect(page).to have_content "AKASATANA Salon"
     end
   end
 
   feature 'Log in' do
     scenario 'with valid information' do
       visit root_path
-      click_on 'Sign_in'
+      click_on 'ログイン'
       fill_in 'Email', with: salon.email
       fill_in 'Password', with: salon.password
       click_button 'Log in'
       expect(page).to have_current_path admin_salon_path
-      expect(page).to have_content "Name: #{salon.name}"
+      expect(page).to have_content salon.name
     end
 
     scenario 'with invalid information' do
       visit root_path
-      click_on 'Sign_in'
+      click_on 'ログイン'
       fill_in 'Email', with: ""
       fill_in 'Password', with: ""
       click_button 'Log in'
       expect(page).to have_current_path new_customer_session_path
-      expect(page).to have_content "Invalid Email or password."
     end
 
     scenario 'without admin information' do

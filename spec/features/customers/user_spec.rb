@@ -10,7 +10,7 @@ RSpec.feature "Customers::Users", type: :feature do
 
   scenario 'sign up for valid user' do
     visit root_path
-    click_on 'Sign_up'
+    click_on '会員登録'
     expect {
       fill_in 'customer_name', with: 'Taro Yamada'
       fill_in 'customer_email', with: 'foo@example.com'
@@ -24,13 +24,12 @@ RSpec.feature "Customers::Users", type: :feature do
       select 'User', from: 'customer_type'
       click_button 'Sign up'
     }.to change(User, :count).by(1)
-    expect(page).to have_content "Welcome! You have signed up successfully."
     expect(page).to have_content "Name: Taro Yamada"
   end
 
   scenario 'login for User' do
     visit root_path
-    click_on 'Sign_in'
+    click_on 'ログイン'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
@@ -39,12 +38,11 @@ RSpec.feature "Customers::Users", type: :feature do
 
   scenario 'login with invalid information' do
     visit root_path
-    click_on 'Sign_in'
+    click_on 'ログイン'
     fill_in 'Email', with: ""
     fill_in 'Password', with: ""
     click_button 'Log in'
     expect(page).to have_current_path new_customer_session_path
-    expect(page).to have_content "Invalid Email or password."
   end
 
   scenario 'deny to access to /mypage for another customer' do
