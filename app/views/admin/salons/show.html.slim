@@ -1,38 +1,38 @@
-h1
-  = @salon.name
+main
+  .main-container
+    = render 'sidebar'
 
-= link_to 'サロン情報編集', edit_admin_salon_path
-br
-= link_to 'Email/パスワード変更', edit_customer_registration_path
-br
-|  Name: 
-= @salon.name
-br
-|  Category: 
-= @salon.category.name
-br
-|  Prefecture: 
-= @salon.prefecture.name
-br
-|  Email: 
-= @salon.email
-br
-|  TEL: 
-= @salon.tel
-br
-|  サロン特徴:
-= @salon.features
-br
-|  座席数:
-= @salon.num_of_sheets
-br
+    .main-contents
+      |  Name:
+      = @salon.name
+      br
+      |  Category:
+      = @salon.category.name
+      br
+      |  Prefecture:
+      = @salon.prefecture.name
+      br
+      |  City:
+      = @salon.city
+      br
+      | Address:
+      = @salon.address1
+      br
+      |  Email:
+      = @salon.email
+      br
+      |  TEL:
+      = @salon.tel
+      br
+      |  サロン特徴:
+      = @salon.features
+      br
+      |  座席数:
+      = @salon.num_of_sheets
+      br
 
-br
-= link_to 'Reservations', admin_salon_reservations_path
-br
-
-= render 'admin/salons/reservations/salon_form'
-
-br
-
-= render 'reservations_index'
+      = link_to 'Reservations', admin_salon_reservations_path
+      br
+      = render 'admin/salons/reservations/salon_form'
+      br
+      = render 'reservations_index'
