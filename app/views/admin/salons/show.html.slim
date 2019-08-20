@@ -3,31 +3,38 @@ main
     = render 'sidebar'
 
     .main-contents
-      |  Name:
+      | 本日の予約件数:
+      | 件
+      br
+      | 本日の予約一覧:
+      br
+
+
+      | Name:
       = @salon.name
       br
-      |  Category:
+      | Category:
       = @salon.category.name
       br
-      |  Prefecture:
+      | Prefecture:
       = @salon.prefecture.name
       br
-      |  City:
+      | City:
       = @salon.city
       br
       | Address:
       = @salon.address1
       br
-      |  Email:
+      | Email:
       = @salon.email
       br
-      |  TEL:
+      | TEL:
       = @salon.tel
       br
-      |  サロン特徴:
+      | サロン特徴:
       = @salon.features
       br
-      |  座席数:
+      | 座席数:
       = @salon.num_of_sheets
       br
 
