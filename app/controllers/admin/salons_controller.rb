@@ -2,8 +2,10 @@ class Admin::SalonsController < Admin::Base
   before_action :set_current_salon
 
   def show
-    @reservation = @salon.salon_reservations.build
-    @reservation_index = @salon.salon_reservations.all
+    @reservation       = @salon.salons_reservations.build
+    @reservation_index = @salon.salons_reservations.all
+    @salon_reserve     = Salons::Reservation.where(customer: @salon).pluck(:id)
+    @rev_today         = Reservation.include_reserve_info(@salon_reserve).specify_datetime
   end
 
   def edit

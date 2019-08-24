@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
-  has_many :salon_reservations, class_name: "Salons::Reservation"
-  has_many :stylist_reservations, class_name: "Stylists::Reservation"
+  has_many :salons_reservations, class_name: "Salons::Reservation"
+  has_many :stylists_reservations, class_name: "Stylists::Reservation"
   has_many :menus, class_name: "Stylists::Menu"
   has_many :reservations
 

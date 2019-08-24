@@ -8,7 +8,7 @@ class Admin::Stylists::ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = @stylist.stylist_reservations.build(stylist_reservation_params)
+    @reservation = @stylist.stylists_reservations.build(stylist_reservation_params)
     if @reservation.save
       flash[:success] = "予約可能時間の登録に成功しました"
       redirect_to admin_stylist_url

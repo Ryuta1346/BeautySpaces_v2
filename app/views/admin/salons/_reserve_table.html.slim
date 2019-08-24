@@ -1,0 +1,38 @@
+table.reserve_table
+  caption
+    | 本日の予約一覧
+  thead
+    tr
+      th
+        | #
+      th
+        | 予約日時
+      th
+        | スタイリスト
+      th
+        | メニュー
+      th
+        | 施術時間
+      th
+        | 料金
+      th
+        | 詳細
+  tbody
+    - @rev_today.each.with_index(1) do |rev, i|
+      tr
+        td
+          = i
+        td
+          = rev.salons_reservation.reservation_time
+        td
+          = rev.stylists_reservation.customer.name
+        td
+          = rev.stylists_menu.name
+        td
+          = rev.stylists_menu.operation_time
+          | 分
+        td
+          = rev.stylists_menu.price
+          | 円
+        td
+          = link_to '詳細', "#"

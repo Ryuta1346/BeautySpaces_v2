@@ -117,7 +117,7 @@ main {
     padding: 0 0 40px 0;
   }
 
-  .field{
+  .field {
     font-size: 14px;
   }
 
@@ -142,6 +142,7 @@ main {
 }
 
 .main-contents {
+  width: 100%;
   margin-left: 200px;
   padding: 20px;
 }
@@ -177,4 +178,31 @@ a:hover {
   font-size: 12px;
   border-radius: 10px;
   padding: 10px;
+}
+
+/* reserve_table */
+.reserve_table {
+  width: 100%;
+  margin: 0 auto;
+  background: #DADADA;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: center;
+
+  caption {
+    font-size: 20px;
+  }
+
+  th {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    height: 30px;
+
+  }
+
+  td {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    height: 50px;
+  }
 }

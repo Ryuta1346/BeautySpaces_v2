@@ -3,43 +3,14 @@ main
     = render 'sidebar'
 
     .main-contents
-      | 本日の予約件数:
-      | 件
+      h2
+        | 本日の予約件数:
+        = @rev_today.length
+        | 件
       br
-      | 本日の予約一覧:
-      br
-
-
-      | Name:
-      = @salon.name
-      br
-      | Category:
-      = @salon.category.name
-      br
-      | Prefecture:
-      = @salon.prefecture.name
-      br
-      | City:
-      = @salon.city
-      br
-      | Address:
-      = @salon.address1
-      br
-      | Email:
-      = @salon.email
-      br
-      | TEL:
-      = @salon.tel
-      br
-      | サロン特徴:
-      = @salon.features
-      br
-      | 座席数:
-      = @salon.num_of_sheets
-      br
-
-      = link_to 'Reservations', admin_salon_reservations_path
+      = render 'reserve_table'
       br
       = render 'admin/salons/reservations/salon_form'
       br
       = render 'reservations_index'
+      br
