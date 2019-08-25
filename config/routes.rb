@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'regions/index'
-  get 'regions/show'
   devise_for :customers
   root 'top#home'
+
+  get 'regions/index'
+  get 'regions/show'
   get '/about', to: 'top#about'
   get '/help', to: 'top#help'
   get '/contact', to: 'top#contact'

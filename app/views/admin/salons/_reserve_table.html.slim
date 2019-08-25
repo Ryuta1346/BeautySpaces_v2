@@ -16,6 +16,8 @@ table.reserve_table
       th
         | 料金
       th
+        | 取引状態
+      th
         | 詳細
   tbody
     - @rev_today.each.with_index(1) do |rev, i|
@@ -35,4 +37,9 @@ table.reserve_table
           = rev.stylists_menu.price
           | 円
         td
-          = link_to '詳細', "#"
+          - if rev.finish_salon?
+            | 完了済
+          - else
+            | 未完了
+        td
+          = link_to '詳細', admin_salon_reservation_path(rev)

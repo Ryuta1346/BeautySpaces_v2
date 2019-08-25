@@ -3,7 +3,5 @@ class Salons::Reservation < ApplicationRecord
 
   has_many :reservations
 
-  # def get_salon_info(salon)
-  #   Salons::Reservation.where(customer: salon).pluck(:id)
-  # end
+  default_scope -> { order(reservation_time: :asc) }
 end

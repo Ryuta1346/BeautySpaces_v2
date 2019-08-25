@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_31_130711) do
+ActiveRecord::Schema.define(version: 2019_08_25_090654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,10 @@ ActiveRecord::Schema.define(version: 2019_07_31_130711) do
     t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "finish_salon", default: false, null: false
+    t.boolean "finish_stylist", default: false, null: false
+    t.text "salon_memo"
+    t.text "stylist_memo"
     t.index ["customer_id"], name: "index_reservations_on_customer_id"
   end
 

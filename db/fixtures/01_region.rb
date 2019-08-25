@@ -1,11 +1,11 @@
 Region.seed(:id,
-          { name: "北海道", en_name: "hokkaido" },
-          { name: "東北", en_name: "tohoku" },
-          { name: "関東", en_name: "kanto" },
-          { name: "北信越", en_name: "hokushinetsu" },
-          { name: "東海", en_name: "tokai" },
-          { name: "関西", en_name: "kansai" },
-          { name: "中国", en_name: "tyugoku" },
-          { name: "四国", en_name: "shikoku" },
-          { name: "九州・沖縄", en_name: "kyusyu" }
+            { id: 1, name: "北海道", en_name: "hokkaido" },
+            { id: 2, name: "東北", en_name: "tohoku" },
+            { id: 3, name: "関東", en_name: "kanto" },
+            { id: 4, name: "北信越", en_name: "hokushinetsu" },
+            { id: 5, name: "東海", en_name: "tokai" },
+            { id: 6, name: "関西", en_name: "kansai" },
+            { id: 7, name: "中国", en_name: "tyugoku" },
+            { id: 8, name: "四国", en_name: "shikoku" },
+            { id: 9, name: "九州・沖縄", en_name: "kyusyu" }
 )

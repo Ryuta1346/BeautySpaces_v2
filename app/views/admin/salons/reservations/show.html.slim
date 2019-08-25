@@ -1,2 +1,67 @@
-h1 Admin::Salons::Reservations#show
-p Find me in app/views/admin/salons/reservations/show.html.slim
+.main-container
+  = render 'admin/salons/sidebar'
+
+  .main-contents
+    table
+      caption
+        | 取引詳細
+      thead
+
+      tbody
+        tr
+          th
+            | 予約日時
+          td
+            = @reservation.salons_reservation.reservation_time
+        tr
+          th
+            | スタイリスト
+          td
+            = @reservation.stylists_reservation.customer.name
+        tr
+          th
+            | メニュー
+          td
+            = @reservation.stylists_menu.name
+        tr
+          th
+            | 施術時間
+          td
+            = @reservation.stylists_menu.operation_time
+            | 分
+        tr
+          th
+            | 料金
+          td
+            = @reservation.stylists_menu.price
+            | 円
+      - if @reservation.finish_salon
+        tr
+          th
+            | 取引状態
+          td
+            | 完了済
+        tr
+          th
+            | 施術メモ
+          td
+            = @reservation.salon_memo
+      - else
+        = form_for(@reservation, url: reservation_path(@reservation)) do |f|
+          tr
+            th
+              | 取引状態
+            td
+              | 未完了
+              br
+              = f.check_box :finish_salon, value: true
+              = f.label :完了済みにする
+          tr
+            th
+              | 施術メモ
+            td
+              = f.text_area :salon_memo
+              br
+              = f.submit '取引完了'
+
+    = link_to '戻る', :back

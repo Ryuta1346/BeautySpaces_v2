@@ -1,16 +1,15 @@
-main
-  .main-container
-    = render 'sidebar'
+.main-container
+  = render 'sidebar'
 
-    .main-contents
-      h2
-        | 本日の予約件数:
-        = @rev_today.length
-        | 件
-      br
-      = render 'reserve_table'
-      br
-      = render 'admin/salons/reservations/salon_form'
-      br
-      = render 'reservations_index'
-      br
+  .main-contents
+    h2
+      | 本日の予約件数:
+      = @rev_today.length
+      | 件
+    br
+    = render 'reserve_table'
+    br
+    = render 'admin/salons/reservations/salon_form'
+    br
+    = render 'reservations_index'
+    br

@@ -193,6 +193,10 @@ a:hover {
     font-size: 20px;
   }
 
+  tbody tr:nth-child(2n){
+    background: #ecfafc;
+  }
+
   th {
     border-top: 1px solid;
     border-bottom: 1px solid;

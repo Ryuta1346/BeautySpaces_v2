@@ -5,6 +5,7 @@ class Admin::Salons::ReservationsController < ApplicationController
   end
 
   def show
+    @reservation = Reservation.find_by(id: params[:id])
   end
 
   def create
@@ -22,9 +23,17 @@ class Admin::Salons::ReservationsController < ApplicationController
   end
 
   def update
+    @reservation = @salon.salons_reservations.build
+    if @reservation.update_attributes(salon_reservation_params)
+      flash[:success] = "予約可能時間の登録に成功しました"
+      redirect_to admin_salon_url
+    else
+      flash[:danger] = "予約可能時間の登録に失敗しました"
+      redirect_to admin_salon_url
+    end
   end
 
-  def destory
+  def destroy
   end
 
   private
