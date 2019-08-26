@@ -56,12 +56,12 @@ nav {
 
 .search-contents {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   list-style: none;
   margin: 0 auto;
   padding: 0;
-  width: 75%;
-  height: 300px;
+  width: 100%;
+  height: 100%;
 
   li {
     flex: 0 0 24%;
@@ -77,12 +77,29 @@ nav {
       border-radius: 10px 10px 0 0;
     }
 
-    h2 {
-      margin: 0;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9rem;
+    a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #1a1a1a;
     }
+  }
+}
+
+.top-style {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+
+  .style-line {
+    border: 1px solid gray;
+    width: 25%;
+    padding-top: 20px;
+    text-align: center;
+    border-radius: 5px;
+    height: 50px;
+    margin: auto 0;
+    display: inline-block;
   }
 }
 
@@ -127,7 +144,7 @@ main {
     flex: 0 0 200px;
     width: 200px;
     height: 100%;
-    background: #DADADA;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
 
     ul {
       list-style: none;
@@ -145,23 +162,23 @@ main {
   width: 100%;
   margin-left: 200px;
   padding: 20px;
+  background: #F5F5F5;
 }
 
 
 /* ボタン */
 .btn {
-  display: block;
-  margin: auto 20px 20px 20px;
-  padding: 10px;
-  border-radius: 30px;
-  background-color: #000000;
   text-align: center;
-  text-decoration: none;
-  color: #ffffff;
-}
+  font-size: 16px;
+  line-height: 200%;
+  width: 70%;
+  margin: auto;
+  border-radius: 10px;
 
-.btn:hover {
-  background-color: #3B3B3B;
+  a {
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
 
 /* リンク */
@@ -184,29 +201,41 @@ a:hover {
 .reserve_table {
   width: 100%;
   margin: 0 auto;
-  background: #DADADA;
+  background: #ffffff;
   border-collapse: collapse;
   font-size: 14px;
   text-align: center;
 
   caption {
     font-size: 20px;
+    text-align: left;
   }
 
-  tbody tr:nth-child(2n){
-    background: #ecfafc;
+  thead {
+    background: #2c8daa;
+    color: #ffffff;
   }
 
-  th {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    height: 30px;
+  tbody {
+    tr {
+      &:hover {
+        cursor: default;
+        background: #ecfafc;
+      }
 
-  }
+      &:nth-child(2n) {
+        background: #EEEEEE;
 
-  td {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    height: 50px;
+        &:hover {
+          cursor: default;
+          background: #ecfafc;
+        }
+      }
+    }
+
+    td {
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2);
+      height: 30px;
+    }
   }
 }

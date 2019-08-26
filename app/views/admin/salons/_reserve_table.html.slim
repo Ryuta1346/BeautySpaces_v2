@@ -25,17 +25,15 @@ table.reserve_table
         td
           = i
         td
-          = rev.salons_reservation.reservation_time
+          = reservation(rev.salons_reservation.reservation_time)
         td
           = rev.stylists_reservation.customer.name
         td
           = rev.stylists_menu.name
         td
-          = rev.stylists_menu.operation_time
-          | 分
+          = operation(rev.stylists_menu.operation_time)
         td
-          = rev.stylists_menu.price
-          | 円
+          = offer_price(rev.stylists_menu.price)
         td
           - if rev.finish_salon?
             | 完了済

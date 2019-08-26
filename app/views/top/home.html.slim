@@ -2,19 +2,29 @@ div.pageTop
 
 ul.search-contents
   li
-    div
-      = image_tag "select-place.png"
-    .btn
-      | サロンから予約する
+    = link_to "#" do
+      div
+        = image_tag "select-place.png"
+        .btn
+          | サロンから予約する
   li
-    div
-      = image_tag "select-person.png"
-    .btn
-      | スタイリストから予約する
+    = link_to "#" do
+      div
+        = image_tag "select-person.png"
+        .btn
+          | スタイリストから予約する
   li
-    div
-      = image_tag "select-date.png"
-    .btn
-      | 日時から予約する
+    = link_to "#" do
+      div
+        = image_tag "select-date.png"
+        .btn
+          | 日時から予約する
 
 
+.top-style
+  .style-line
+    | サロン
+  .style-line
+    | スタイリスト
+  .style-line
+    | 場所

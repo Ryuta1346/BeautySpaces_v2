@@ -6,4 +6,14 @@ module ApplicationHelper
   def operation(time)
     "#{time}分"
   end
+
+  def offer_price(price)
+    "#{price} 円"
+  end
+
+  def customer_path(customer)
+    admin_salon_path if customer.class == Salon
+    admin_stylist_path if customer.class == Stylist
+    user_path if customer.class == User
+  end
 end
