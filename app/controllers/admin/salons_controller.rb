@@ -4,7 +4,7 @@ class Admin::SalonsController < Admin::Base
   def show
     @reservation       = @salon.salons_reservations.build
     @reservation_index = @salon.salons_reservations.all
-    salon_reserve     = Salons::Reservation.where(customer: @salon).pluck(:id)
+    salon_reserve      = Salons::Reservation.where(customer: @salon).pluck(:id)
     @rev_today         = Reservation.includes(:salons_reservation, :stylists_menu, stylists_reservation: [:customer])
                              .joins_reserve_info(salon_reserve)
                              .specify_datetime
