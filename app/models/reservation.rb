@@ -13,7 +13,4 @@ class Reservation < ApplicationRecord
   def self.specify_datetime
     where("salons_reservations.reservation_time >= ?", "2019-09-01 00:00:00").where("salons_reservations.reservation_time < ?", "2019-09-02 00:00:00")
   end
-
-  # where("salons_reservations.reservation_time >= ?", Date.today.ctime).where("salons_reservations.reservation_time < ?", Date.tomorrow.ctime)
-
 end
