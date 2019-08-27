@@ -6,6 +6,8 @@ table.reserve_table
       th
         | #
       th
+        | 顧客名
+      th
         | 予約日時
       th
         | スタイリスト
@@ -24,6 +26,8 @@ table.reserve_table
       tr
         td
           = i
+        td
+          = rev.customer.name
         td
           = reservation(rev.salons_reservation.reservation_time)
         td

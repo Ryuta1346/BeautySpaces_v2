@@ -12,8 +12,8 @@ module ApplicationHelper
   end
 
   def customer_path(customer)
-    admin_salon_path if customer.class == Salon
-    admin_stylist_path if customer.class == Stylist
-    user_path if customer.class == User
+    return admin_salon_path if customer.class == Salon
+    return admin_stylist_path if customer.class == Stylist
+    return user_path if customer.class == User
   end
 end
