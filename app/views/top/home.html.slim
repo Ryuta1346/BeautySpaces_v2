@@ -1,30 +1,22 @@
-div.pageTop
+.main-cover
 
-ul.search-contents
-  li
-    = link_to "#" do
-      div
-        = image_tag "select-place.png"
-        .btn
-          | サロンから予約する
-  li
-    = link_to "#" do
-      div
-        = image_tag "select-person.png"
-        .btn
-          | スタイリストから予約する
-  li
-    = link_to "#" do
-      div
-        = image_tag "select-date.png"
-        .btn
-          | 日時から予約する
-
-
-.top-style
-  .style-line
-    | サロン
-  .style-line
-    | スタイリスト
-  .style-line
-    | 場所
+.main-container
+  h2
+    | 美容室・スタイリストを予約する
+  ul.search-contents
+    li
+      = link_to "#" do
+        = image_tag "topcover-salon.jpg"
+        | 美容室
+    li
+      = link_to "#" do
+        = image_tag "topcover-stylists.jpg"
+        | スタイリスト
+    li
+      = link_to "#" do
+        = image_tag "topcover-calendar.jpg"
+        | 日程
+    li
+      = link_to "#" do
+        = image_tag "topcover-review2.jpg"
+        | レビュー

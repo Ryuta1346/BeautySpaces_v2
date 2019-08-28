@@ -1,10 +1,13 @@
-.main-container
+.manage-main-container
   = render 'sidebar'
 
-  .main-contents
+  .manage-main-contents
     h2
       | 本日の予約件数:
       = @rev_today.length
       | 件
-    br
+    h2
+      | 予約総件数:
+      = @salon_reserve.length
+      | 件
     = render 'reserve_table'
