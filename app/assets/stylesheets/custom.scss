@@ -70,6 +70,7 @@ nav {
   width: 100%;
   border-bottom: 5px solid $main-color;
   z-index: 100;
+  white-space: nowrap;
 
   ul {
     display: flex;
@@ -309,6 +310,60 @@ a:hover {
     }
   }
 }
+
+/* form */
+//input[type="text"],input[type="email"],input[type="tel"]{
+//  width: 300px;
+//  font-size: 16px;
+//}
+form {
+  width: 100%;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .field {
+    font-size: 14px;
+    width: 50%;
+    margin: 0 auto;
+    padding: 5px;
+
+    .form_label {
+      display: inline-block;
+      width: 10em;
+    }
+
+    .form_field {
+      width: 300px;
+    }
+
+    .telephone_field {
+      width: 200px;
+    }
+
+    select {
+      width: 200px;
+    }
+  }
+
+  .action {
+    width: 20%;
+    margin: 0 auto;
+
+    .btn {
+      text-align: center;
+      font-size: 16px;
+      width: 100%;
+      margin: 20px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+  }
+}
+
 
 /* debug */
 .debugger {

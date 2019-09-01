@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :customers
+  devise_for :customers, path: 'salons'
+  devise_for :users
+  devise_for :stylists
+
   root 'top#home'
 
   get 'regions/index'
