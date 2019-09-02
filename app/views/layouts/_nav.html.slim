@@ -13,13 +13,23 @@ ul
     = link_to 'SNS', "#"
   li
     = link_to 'ブログ', "#"
-  - if customer_signed_in?
+  - if user_signed_in?
     li
       = link_to current_customer.name, customer_path(current_customer)
     li
-      = link_to 'ログアウト', destroy_customer_session_path, method: :delete
+      = link_to 'ログアウト', destroy_user_session_path, method: :delete
+  - elsif salon_signed_in?
+    li
+      = link_to current_customer.name, customer_path(current_customer)
+    li
+      = link_to 'ログアウト', destroy_salon_session_path, method: :delete
+  - elsif stylist_signed_in?
+    li
+      = link_to current_customer.name, customer_path(current_customer)
+    li
+      = link_to 'ログアウト', destroy_stylist_session_path, method: :delete
   - else
     li
       = link_to '会員登録', new_user_registration_path
     li
-      = link_to 'ログイン', new_customer_session_path
+      = link_to 'ログイン', new_user_session_path

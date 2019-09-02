@@ -1,7 +1,7 @@
 .sidebar
   ul
     li
-      = link_to current_customer.name, admin_salon_path
+      = link_to current_customer.name, admin_salon_path || admin_stylist_path
     li
       = link_to '予約時間管理', '#'
     li
@@ -17,8 +17,8 @@
     li
       = link_to 'サロン利用規約管理', '#'
     li
-      = link_to 'サロン情報編集', edit_admin_salon_path
+      = link_to 'サロン情報編集', edit_admin_salon_path || edit_admin_stylist_path
     li
-      = link_to 'Email/パスワード変更', edit_customer_registration_path
+      = link_to 'Email/パスワード変更', edit_salon_registration_path || edit_stylist_registration_path
     li
       = link_to 'ログアウト', '#'

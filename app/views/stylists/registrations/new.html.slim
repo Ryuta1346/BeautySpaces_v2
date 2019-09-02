@@ -35,7 +35,7 @@ form
   .field
     = f.label :住所, class: "form_label"
     = f.text_field :address1, placeholder: "◆◆町1丁目", class: "form_field"
-  = hidden_field_tag :type, :stylist
+  = f.hidden_field :type, :value => :Stylist
   .action
     = f.submit "Sign up", class: "btn"
       = render "devise/shared/links"

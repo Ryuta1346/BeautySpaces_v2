@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :customers, path: 'salons'
+  devise_for :salons
   devise_for :users
   devise_for :stylists
 
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/about', to: 'top#about'
   get '/help', to: 'top#help'
   get '/contact', to: 'top#contact'
+  get '/info', to: 'top#info'
 
   namespace :admin do
     resource :salon, only: [:show, :edit, :update] do

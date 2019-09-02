@@ -5,8 +5,8 @@ RSpec.feature "Customers::Stylists", open_on_error: true, type: :feature do
   let!(:category2) { create(:category, name: '一般利用') }
   let!(:region1) { create(:region) }
   let!(:prefecture1) { create(:prefecture, region: region1) }
-  let!(:stylist) { create(:stylist, category: category1, prefecture: prefecture1) }
-  let(:user) { create(:user, prefecture: prefecture1, category: category2) }
+  let!(:stylist) { create(:stylist, category_id: category1.id, prefecture: prefecture1) }
+  let(:user) { create(:user, prefecture: prefecture1, category_id: category2.id) }
 
   feature 'Sign up' do
     before do
@@ -14,18 +14,18 @@ RSpec.feature "Customers::Stylists", open_on_error: true, type: :feature do
     end
 
     scenario 'with valid information' do
-      click_on '会員登録'
+      visit new_stylist_registration_path
       expect {
-        fill_in 'customer_name', with: 'Taro Yamada'
-        fill_in 'customer_email', with: 'foo@example.com'
-        fill_in 'customer_password', with: 'foobar'
-        fill_in 'customer_password_confirmation', with: 'foobar'
-        select "ヘアサロン", from: 'customer_category_id'
-        fill_in 'customer_tel', with: '00011111112'
-        select '東京都', from: 'customer_prefecture_id'
-        fill_in 'customer_city', with: '渋谷区'
-        fill_in 'customer_address1', with: '道玄坂0-0'
-        select 'Stylist', from: 'customer_type'
+        fill_in 'stylist_name', with: 'Taro Yamada'
+        fill_in 'stylist_email', with: 'foo@example.com'
+        fill_in 'stylist_password', with: 'foobar'
+        fill_in 'stylist_password_confirmation', with: 'foobar'
+        select "ヘアサロン", from: 'stylist_category_id'
+        fill_in 'stylist_tel', with: '00011111112'
+        select '東京都', from: 'stylist_prefecture_id'
+        fill_in 'stylist_city', with: '渋谷区'
+        fill_in 'stylist_address1', with: '道玄坂0-0'
+        # select 'Stylist', from: 'customer_type'
         click_button 'Sign up'
       }.to change(Stylist, :count).by(1)
       expect(page).to have_current_path admin_stylist_path
@@ -39,7 +39,7 @@ RSpec.feature "Customers::Stylists", open_on_error: true, type: :feature do
     end
 
     scenario 'with valid Stylist' do
-      click_on 'ログイン'
+      visit new_stylist_session_path
       fill_in 'Email', with: stylist.email
       fill_in 'Password', with: stylist.password
       click_button 'Log in'
@@ -47,11 +47,11 @@ RSpec.feature "Customers::Stylists", open_on_error: true, type: :feature do
     end
 
     scenario 'with invalid information' do
-      click_on 'ログイン'
+      visit new_stylist_session_path
       fill_in 'Email', with: ""
       fill_in 'Password', with: ""
       click_button 'Log in'
-      expect(page).to have_current_path new_customer_session_path
+      expect(page).to have_current_path new_stylist_session_path
     end
 
     scenario 'without admin information' do
