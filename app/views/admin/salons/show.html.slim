@@ -4,10 +4,10 @@
   .manage-main-contents
     h2
       | 本日の予約件数:
-      = @rev_today.length
+      = @rev_today.size
       | 件
     h2
       | 予約総件数:
-      = @salon_reserve.length
+      = @salon_reserve_total
       | 件
     = render 'reserve_table'

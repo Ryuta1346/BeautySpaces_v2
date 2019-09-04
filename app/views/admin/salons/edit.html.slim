@@ -6,7 +6,7 @@ main
       h2
         | サロン情報編集
         = form_for(@salon, url: admin_salon_path) do |f|
-          - #= render 'shared/error_messages', object: f.object
+          = render 'shared/error_messages', object: f.object
           .field
             = f.label :所属カテゴリー
             br

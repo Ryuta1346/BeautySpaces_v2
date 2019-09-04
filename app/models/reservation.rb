@@ -4,14 +4,14 @@ class Reservation < ApplicationRecord
   belongs_to :stylists_reservation, class_name: "Stylists::Reservation"
   belongs_to :stylists_menu, class_name: "Stylists::Menu"
 
-  # default_scope -> { order(reservation_time: :asc) }
+  scope :in_salon_reservations, ->(_salon_ids) { where(salons_reservation_id: _salon_ids) }
+  scope :only_today, -> { where(salons_reservations: { reservation_time: Time.current.all_day }) }
 
-  def self.joins_reserve_info(salon_ids)
-    joins(salons_reservation: :customer).where(salons_reservation_id: salon_ids)
-  end
-
-  def self.specify_datetime
-    # 日付は仮置き。Date.today.ctimeおよびDate.tomorrow.ctimeを指定予定
-    where("salons_reservations.reservation_time >= ?", "2019-09-01 00:00:00").where("salons_reservations.reservation_time < ?", "2019-09-02 00:00:00")
+  def self.reserved_schedules(salon_reservation_ids)
+    self.includes(:salons_reservation, :stylists_menu, :customer, stylists_reservation: [:customer])
+        .joins(salons_reservation: :customer)
+        .in_salon_reservations(salon_reservation_ids)
+        .only_today
+        .order(reservation_time: :asc)
   end
 end

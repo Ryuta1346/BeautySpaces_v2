@@ -18,6 +18,15 @@ Reservation.seed(:id,
                      finish_stylist:          false
                  }, {
                      id:                      3,
+                     salons_reservation_id:   5,
+                     stylists_reservation_id: 5,
+                     stylists_menu_id:        9,
+                     customer_id:             9,
+                     memo:                    "",
+                     finish_salon:            false,
+                     finish_stylist:          false
+                 },  {
+                     id:                      4,
                      salons_reservation_id:   4,
                      stylists_reservation_id: 4,
                      stylists_menu_id:        8,
@@ -26,29 +35,20 @@ Reservation.seed(:id,
                      finish_salon:            false,
                      finish_stylist:          false
                  }, {
-                     id:                      4,
-                     salons_reservation_id:   5,
-                     stylists_reservation_id: 5,
-                     stylists_menu_id:        9,
-                     customer_id:             9,
-                     memo:                    "",
-                     finish_salon:            false,
-                     finish_stylist:          false
-                 }, {
                      id:                      5,
-                     salons_reservation_id:   6,
-                     stylists_reservation_id: 6,
-                     stylists_menu_id:        12,
-                     customer_id:             11,
-                     memo:                    "",
-                     finish_salon:            false,
-                     finish_stylist:          false
-                 }, {
-                     id:                      6,
                      salons_reservation_id:   7,
                      stylists_reservation_id: 7,
                      stylists_menu_id:        13,
                      customer_id:             13,
+                     memo:                    "",
+                     finish_salon:            false,
+                     finish_stylist:          false
+                 },{
+                     id:                      6,
+                     salons_reservation_id:   6,
+                     stylists_reservation_id: 6,
+                     stylists_menu_id:        12,
+                     customer_id:             11,
                      memo:                    "",
                      finish_salon:            false,
                      finish_stylist:          false
@@ -74,6 +74,24 @@ Reservation.seed(:id,
                      id:                      9,
                      salons_reservation_id:   10,
                      stylists_reservation_id: 10,
+                     stylists_menu_id:        2,
+                     customer_id:             19,
+                     memo:                    "",
+                     finish_salon:            false,
+                     finish_stylist:          false
+                 }, {
+                     id:                      10,
+                     salons_reservation_id:   19,
+                     stylists_reservation_id: 19,
+                     stylists_menu_id:        2,
+                     customer_id:             19,
+                     memo:                    "",
+                     finish_salon:            false,
+                     finish_stylist:          false
+                 }, {
+                     id:                      11,
+                     salons_reservation_id:   20,
+                     stylists_reservation_id: 20,
                      stylists_menu_id:        2,
                      customer_id:             19,
                      memo:                    "",

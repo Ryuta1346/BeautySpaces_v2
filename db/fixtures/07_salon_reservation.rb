@@ -128,14 +128,14 @@ Salons::Reservation.seed(:id,
                          }, {
                              id: 19,
                              customer_id: 1,
-                             reservation_time: '2019-09-02 17:00:00',
+                             reservation_time: '2019-09-05 18:00:00',
                              operation_time: 60,
                              memo: '',
                              status: false
                          }, {
                              id: 20,
                              customer_id: 1,
-                             reservation_time: '2019-09-02 18:00:00',
+                             reservation_time: '2019-09-05 17:00:00',
                              operation_time: 120,
                              memo: '',
                              status: false

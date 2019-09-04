@@ -21,10 +21,28 @@ class Admin::Stylists::ReservationsController < ApplicationController
   def edit
   end
 
+  def update
+    @reservation = @stylist.stylists_reservations.find_by(id: params[:id])
+    if @reservation.update_attributes(stylist_reservation_params)
+      flash[:success] = "予約可能時間の更新に成功しました"
+      redirect_to admin_stylist_url
+    else
+      flash[:danger] = "予約可能時間の更新に失敗しました"
+      render admin_stylist_path
+    end
+  end
+
+  def destroy
+    @reservation = @stylist.stylists_reservations.find_by(id: params[:id])
+    @reservation.destroy
+    flash[:success] = "#{@reservation.reservation_time}の予約可能時間情報を削除しました"
+    redirect_to admin_stylist_url
+  end
+
   private
 
     def set_current_stylist
-      redirect_to root_url unless current_customer.type['Stylist']
+      redirect_to root_url unless current_customer&.correct_customer?('Stylist')
       @stylist ||= current_customer
     end
 

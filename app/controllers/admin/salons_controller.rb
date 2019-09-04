@@ -2,11 +2,9 @@ class Admin::SalonsController < Admin::Base
   before_action :set_current_salon
 
   def show
-    @salon_reserve = @salon.salons_reservations.where(customer: @salon).pluck(:id)
-    @rev_today     = Reservation.includes(:salons_reservation, :stylists_menu, :customer, stylists_reservation: [:customer])
-                         .joins_reserve_info(@salon_reserve)
-                         .specify_datetime
-                         .order(reservation_time: :asc)
+    salon_reservation_ids = @salon.salons_reservations.pluck(:id)
+    @rev_today = Reservation.reserved_schedules(salon_reservation_ids)
+    @salon_reserve_total = salon_reservation_ids.count
   end
 
   def edit
