@@ -1,7 +1,7 @@
-.main-container
+.manage-main-container
   = render 'admin/salons/sidebar'
 
-  .main-contents
+  .manage-main-contents
     table
       caption
         | 取引詳細
@@ -12,7 +12,7 @@
           th
             | 予約日時
           td
-            = reservation(@reservation.salons_reservation.reservation_time)
+            = reservation_time(@reservation.salons_reservation.reservation_time)
         tr
           th
             | スタイリスト
@@ -36,32 +36,7 @@
             = @reservation.stylists_menu.price
             | 円
       - if @reservation.finish_salon
-        tr
-          th
-            | 取引状態
-          td
-            | 完了済
-        tr
-          th
-            | 施術メモ
-          td
-            = @reservation.salon_memo
+        = render partial: 'completed', locals: { reservation: @reservation }
       - else
-        = form_for(@reservation, url: reservation_path(@reservation)) do |f|
-          tr
-            th
-              | 取引状態
-            td
-              | 未完了
-              br
-              = f.check_box :finish_salon, value: true
-              = f.label :完了済みにする
-          tr
-            th
-              | 施術メモ
-            td
-              = f.text_area :salon_memo
-              br
-              = f.submit '取引完了'
-
+        = render partial: 'not_complete', locals: { reservation: @reservation }
     = link_to '戻る', :back
