@@ -57,49 +57,5 @@ RSpec.feature "Customers::Salons", open_on_error: true, type: :feature do
       expect(page).to have_current_path root_path
     end
   end
-
-  ## ここ以下、表記場所変更のため一時無効化
-  # feature 'registers a reservation' do
-  #   before do
-  #     sign_in salon
-  #     visit admin_salon_path
-  #   end
-  #
-  #   scenario 'with valid information' do
-  #     expect {
-  #       select '2019', from: 'salons_reservation_reservation_time_1i'
-  #       select 'August', from: 'salons_reservation_reservation_time_2i'
-  #       select '10', from: 'salons_reservation_reservation_time_3i'
-  #       select '11', from: 'salons_reservation_reservation_time_4i'
-  #       select '15', from: 'salons_reservation_reservation_time_5i'
-  #       fill_in 'salons_reservation[operation_time]', with: '60'
-  #       fill_in 'salons_reservation[memo]', with: "あいうえお"
-  #       click_on '登録'
-  #     }.to change(Salons::Reservation, :count).by(1)
-  #     expect(page).to have_current_path admin_salon_path
-  #     expect(page).to have_content '予約可能時間の登録に成功しました'
-  #     expect(page).to have_content "8月10日 土曜日 11:15 60分あいうえお"
-  #   end
-  #
-  #   scenario 'with invalid information' do
-  #     fill_in 'salons_reservation[operation_time]', with: ''
-  #     click_on '登録'
-  #     expect(page).to have_content '予約可能時間の登録に失敗しました'
-  #     expect(page).to have_current_path admin_salon_path
-  #   end
-  # end
-
-  # feature 'display reservation information' do
-  #   let!(:reservation1) { create(:salons_reservation, customer: salon, reservation_time: "2019-08-01 12:00:00") }
-  #   let!(:reservation2) { create(:salons_reservation, customer: salon, reservation_time: "2019-07-01 12:00:00") }
-  #
-  #   scenario 'in descending order on top-page' do
-  #     sign_in salon
-  #     visit admin_salon_path
-  #     # 降順で並べ替えられているか確認
-  #     expect(page).to have_content "1.7月1日 月曜日 12:00"
-  #     expect(page).to have_content "2.8月1日 木曜日 12:00"
-  #   end
-  # end
 end
 
