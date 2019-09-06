@@ -8,7 +8,7 @@ class Reservation < ApplicationRecord
   scope :only_today, -> { where(salons_reservations: { reservation_time: Time.current.all_day }) }
 
   def self.reserved_schedules(salon_reservation_ids)
-    self.includes(:salons_reservation, :stylists_menu, :customer, stylists_reservation: [:customer])
+    includes(:salons_reservation, :stylists_menu, :customer, stylists_reservation: [:customer])
         .joins(salons_reservation: :customer)
         .in_salon_reservations(salon_reservation_ids)
         .only_today
