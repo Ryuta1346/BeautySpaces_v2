@@ -27,7 +27,7 @@ br
       = "#{r.salons_reservation.customer.city}#{r.salons_reservation.customer.address1}"
       |:
     td
-      = reservation(r.stylists_reservation.reservation_time)
+      = reservation_time(r.stylists_reservation.reservation_time)
       |:
     td
       = r.stylists_menu.name

@@ -22,7 +22,7 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = @user.reservations.build(reservation_params)
-    if @reservation.save!
+    if @reservation.save
       flash[:success] = "予約しました"
       redirect_to user_url
     else
