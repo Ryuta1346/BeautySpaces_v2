@@ -68,7 +68,7 @@ RSpec.feature "Customers::Stylists", open_on_error: true, type: :feature do
       visit admin_stylist_path
       expect {
         select '2019', from: 'stylists_reservation_reservation_time_1i'
-        select 'August', from: 'stylists_reservation_reservation_time_2i'
+        select '8月', from: 'stylists_reservation_reservation_time_2i'
         select '10', from: 'stylists_reservation_reservation_time_3i'
         select '11', from: 'stylists_reservation_reservation_time_4i'
         select '15', from: 'stylists_reservation_reservation_time_5i'
