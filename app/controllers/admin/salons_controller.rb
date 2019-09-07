@@ -3,8 +3,8 @@ class Admin::SalonsController < Admin::Base
 
   def show
     salon_reservation_ids = @salon.salons_reservations.pluck(:id)
-    @rev_today = Reservation.reserved_schedules(salon_reservation_ids)
-    @salon_reserve_total = salon_reservation_ids.count
+    @reservation_total = salon_reservation_ids.count
+    @today_reservation = Reservation.reserved_schedules(salon_reservation_ids).page(params[:page])
   end
 
   def edit

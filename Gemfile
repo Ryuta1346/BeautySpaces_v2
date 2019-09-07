@@ -42,6 +42,7 @@ gem 'slim-rails', '~>3.1.3'
 gem 'html2slim'
 gem 'therubyracer', platforms: :ruby
 gem 'bullet'
+gem 'kaminari'
 
 
 group :development, :test do

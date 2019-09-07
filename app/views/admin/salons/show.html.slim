@@ -4,10 +4,12 @@
   .manage-main-contents
     h2
       | 本日の予約件数:
-      = @rev_today.size
+      = @today_reservation.total_count
       | 件
     h2
       | 予約総件数:
-      = @salon_reserve_total
+      = @reservation_total
       | 件
     = render 'reserve_table'
+    = paginate @today_reservation
+    = page_entries_info @today_reservation

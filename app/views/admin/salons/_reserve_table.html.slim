@@ -22,7 +22,7 @@ table.reserve_table
       th
         | 詳細
   tbody
-    - @rev_today.each.with_index(1) do |rev, i|
+    - @today_reservation.each.with_index(1) do |rev, i|
       tr
         td
           = i
