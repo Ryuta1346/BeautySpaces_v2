@@ -1,2 +1,42 @@
-h1 Admin::Salons::Reservations#show
-p Find me in app/views/admin/salons/reservations/show.html.slim
+.manage-main-container
+  = render 'admin/salons/sidebar'
+
+  .manage-main-contents
+    table
+      caption
+        | 取引詳細
+      thead
+
+      tbody
+        tr
+          th
+            | 予約日時
+          td
+            = reservation_time(@reservation.salons_reservation.reservation_time)
+        tr
+          th
+            | スタイリスト
+          td
+            = @reservation.stylists_reservation.customer.name
+        tr
+          th
+            | メニュー
+          td
+            = @reservation.stylists_menu.name
+        tr
+          th
+            | 施術時間
+          td
+            = @reservation.stylists_menu.operation_time
+            | 分
+        tr
+          th
+            | 料金
+          td
+            = @reservation.stylists_menu.price
+            | 円
+      - if @reservation.finish_salon
+        = render partial: 'completed', locals: { reservation: @reservation }
+      - else
+        = render partial: 'not_complete', locals: { reservation: @reservation }
+    = link_to '戻る', :back

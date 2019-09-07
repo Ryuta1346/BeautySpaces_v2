@@ -1,3 +1,3 @@
 Category.seed(:id,
-              { id: 0, name: 'ヘアサロン' }
+              { id: 1, name: 'ヘアサロン' }
 )

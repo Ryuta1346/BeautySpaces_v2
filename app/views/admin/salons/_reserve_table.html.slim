@@ -1,0 +1,47 @@
+table.reserve_table
+  caption
+    | 本日の予約一覧
+  thead
+    tr
+      th
+        | #
+      th
+        | 顧客名
+      th
+        | 予約日時
+      th
+        | スタイリスト
+      th
+        | メニュー
+      th
+        | 施術時間
+      th
+        | 料金
+      th
+        | 取引状態
+      th
+        | 詳細
+  tbody
+    - @today_reservation.each.with_index(1) do |rev, i|
+      tr
+        td
+          = i
+        td
+          = rev.customer.name
+        td
+          = reservation_time(rev.salons_reservation.reservation_time)
+        td
+          = rev.stylists_reservation.customer.name
+        td
+          = rev.stylists_menu.name
+        td
+          = operation(rev.stylists_menu.operation_time)
+        td
+          = offer_price(rev.stylists_menu.price)
+        td
+          - if rev.finish_salon?
+            | 完了済
+          - else
+            | 未完了
+        td
+          = link_to '詳細', admin_salon_reservation_path(rev)

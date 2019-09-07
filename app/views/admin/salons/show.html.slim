@@ -1,40 +1,15 @@
-h1
-  = @salon.name
+.manage-main-container
+  = render 'sidebar'
 
-= link_to 'サロン情報編集', edit_admin_salon_path
-br
-= link_to 'Email/パスワード変更', edit_customer_registration_path
-br
-= link_to 'Sign out', destroy_customer_session_path, method: :delete, data: { confritm: "Sign out?" }
-br
-|  Name: 
-= @salon.name
-br
-|  Category: 
-= @salon.category.name
-br
-|  Prefecture: 
-= @salon.prefecture.name
-br
-|  Email: 
-= @salon.email
-br
-|  TEL: 
-= @salon.tel
-br
-|  サロン特徴:
-= @salon.features
-br
-|  座席数:
-= @salon.num_of_sheets
-br
-
-br
-= link_to 'Reservations', admin_salon_reservations_path
-br
-
-= render 'admin/salons/reservations/salon_form'
-
-br
-
-= render 'reservations_index'
+  .manage-main-contents
+    h2
+      | 本日の予約件数:
+      = @today_reservation.total_count
+      | 件
+    h2
+      | 予約総件数:
+      = @reservation_total
+      | 件
+    = render 'reserve_table'
+    = paginate @today_reservation
+    = page_entries_info @today_reservation

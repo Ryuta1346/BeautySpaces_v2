@@ -10,4 +10,7 @@ class TopController < ApplicationController
 
   def contact
   end
+
+  def info
+  end
 end

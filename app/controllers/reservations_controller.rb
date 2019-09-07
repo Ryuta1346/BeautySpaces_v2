@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_current_user
+  before_action :set_current_user, except: [:update]
 
   def index
   end
@@ -10,12 +10,19 @@ class ReservationsController < ApplicationController
   def edit
   end
 
+  def update
+    @reservation = Reservation.find_by(id: params[:id])
+    @reservation.update(reservation_params)
+    redirect_to admin_salon_url if current_customer.type['Salon']
+    redirect_to admin_stylist_url if current_customer.type['Stylist']
+  end
+
   def new
   end
 
   def create
     @reservation = @user.reservations.build(reservation_params)
-    if @reservation.save!
+    if @reservation.save
       flash[:success] = "予約しました"
       redirect_to user_url
     else
@@ -37,6 +44,9 @@ class ReservationsController < ApplicationController
                                           :stylists_menu_id,
                                           :customer_id,
                                           :memo,
-                                          :status)
+                                          :finish_salon,
+                                          :finish_stylist,
+                                          :salon_memo,
+                                          :stylist_memo)
     end
 end

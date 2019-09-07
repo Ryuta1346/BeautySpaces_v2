@@ -1,0 +1,371 @@
+html * {
+  box-sizing: border-box;
+}
+
+$main-color: #6f0086;
+
+body {
+  width: 100%;
+  margin: 0 auto;
+
+  #wrapper {
+    width: 100%;
+  }
+}
+
+/* ヘッダー */
+header {
+  .nav {
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    //border-bottom: 1px solid #ededed;
+    //box-shadow: 0 0 0 2px rgba(0,0,0,0.4);
+  }
+
+  #header {
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+
+    .logo {
+      color: #888;
+      font-size: 12px;
+      display: inline-block;
+      margin: 10px 0 0;
+      float: left;
+
+      a {
+        margin: 0;
+        padding: 0;
+        width: 190px;
+        height: 40px;
+        cursor: pointer;
+      }
+
+      span {
+        line-height: 16px;
+        display: inline-block;
+        margin: 5px 0 0 15px;
+      }
+    }
+
+    .header-link {
+      float: right;
+      margin: 20px;
+      font-size: 0.8rem;
+
+      a {
+        text-decoration: none;
+        color: $main-color;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/* ナビゲーション */
+nav {
+  width: 100%;
+  border-bottom: 5px solid $main-color;
+  z-index: 100;
+  white-space: nowrap;
+
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0 10px;
+  }
+
+  li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #888;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+
+    &:hover {
+      background: #EAD9FF;
+      color: $main-color;
+    }
+  }
+}
+
+/* フッター */
+footer {
+  text-align: left;
+  width: 100%;
+  background: #000000;
+  margin-top: 50px;
+
+  .footer-container {
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    justify-content: space-evenly;
+
+    #logo-footer {
+      text-decoration: none;
+      font-size: 20px;
+      color: #ffffff;
+      padding: 50px;
+      font-family: "American Typewriter";
+    }
+
+    .introduction-box {
+      padding: 20px;
+      margin-right: 30px;
+
+      h2 {
+        margin-left: 5px;
+        color: #ffffff;
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        text-align: left;
+        width: 100%;
+        margin: 10px 0;
+
+        li {
+          font-size: 0.8rem;
+          line-height: 1.5;
+          margin: 2px 5px;
+          padding: 0;
+          white-space: nowrap;
+
+          a {
+            color: #d6d6d6;
+
+            &:link {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* メインコンテンツ */
+main {
+  width: 100%;
+  font-size: 12px;
+  margin: 0 auto;
+
+  /** home **/
+  .main-cover {
+    width: 100%;
+    overflow: hidden;
+    height: 350px;
+    background-image: image_url("main-cover.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .main-container {
+    margin-bottom: 10px;
+    padding: 0;
+    border-bottom: 1px solid #ededed;
+
+    h2 {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-contents {
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+      padding: 0;
+      width: 100%;
+
+      li {
+        flex: 0 0 24%;
+        background-color: #ffffff;
+        display: flex;
+        flex-flow: column;
+        border-radius: 10px;
+
+        img {
+          width: 100%;
+          border-radius: 10px;
+          height: 150px;
+        }
+
+        a {
+          text-decoration: none;
+          text-align: center;
+          font-size: 16px;
+          font-weight: bold;
+          color: #1a1a1a;
+        }
+      }
+    }
+  }
+
+  /* 管理画面 */
+  .manage-main-container {
+    margin-bottom: 10px;
+    padding: 0;
+    border-bottom: 1px solid #ededed;
+  }
+
+  .manage-main-contents {
+    margin-left: 200px;
+    padding: 20px;
+    background: #F5F5F5;
+  }
+}
+
+/* サイドバー */
+.sidebar {
+  position: absolute;
+  flex: 0 0 200px;
+  width: 200px;
+  height: 100%;
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
+
+  ul {
+    list-style: none;
+    text-align: left;
+
+    li {
+      font-size: 14px;
+      line-height: 30px;
+    }
+  }
+}
+
+/* ボタン */
+.btn {
+  text-align: center;
+  font-size: 16px;
+  line-height: 200%;
+  width: 70%;
+  margin: auto;
+  border-radius: 10px;
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+/* リンク */
+a:hover {
+  color: #B00100;
+}
+
+/* reserve_table */
+.reserve_table {
+  width: 100%;
+  margin: 0 auto;
+  background: #ffffff;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: center;
+
+  caption {
+    font-size: 20px;
+    text-align: left;
+  }
+
+  thead {
+    background: #2c8daa;
+    color: #ffffff;
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        cursor: default;
+        background: #ecfafc;
+      }
+
+      &:nth-child(2n) {
+        background: #EEEEEE;
+
+        &:hover {
+          cursor: default;
+          background: #ecfafc;
+        }
+      }
+    }
+
+    td {
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2);
+      height: 30px;
+    }
+  }
+}
+
+/* form */
+.form_layouts {
+  width: 100%;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .field {
+    font-size: 14px;
+    width: 50%;
+    margin: 0 auto;
+    padding: 5px;
+
+    .form_label {
+      display: inline-block;
+      width: 10em;
+    }
+
+    .form_field {
+      width: 300px;
+    }
+
+    .telephone_field {
+      width: 200px;
+    }
+
+    select {
+      width: 200px;
+    }
+  }
+
+  .action {
+    width: 20%;
+    margin: 0 auto;
+
+    .btn {
+      text-align: center;
+      font-size: 16px;
+      width: 100%;
+      margin: 20px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+  }
+}
+
+/* debug */
+.debugger {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid #DADADA;
+  background: #DADADA;
+  font-size: 12px;
+  border-radius: 10px;
+  padding: 10px;
+}

@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :salons
+  devise_for :users
+  devise_for :stylists
+
+  root 'top#home'
+
   get 'regions/index'
   get 'regions/show'
-  devise_for :customers
-  root 'top#home'
   get '/about', to: 'top#about'
   get '/help', to: 'top#help'
   get '/contact', to: 'top#contact'
+  get '/info', to: 'top#info'
 
   namespace :admin do
     resource :salon, only: [:show, :edit, :update] do

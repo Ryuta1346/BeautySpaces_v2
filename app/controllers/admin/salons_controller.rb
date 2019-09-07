@@ -2,8 +2,9 @@ class Admin::SalonsController < Admin::Base
   before_action :set_current_salon
 
   def show
-    @reservation = @salon.salon_reservations.build
-    @reservation_index = @salon.salon_reservations.all
+    salon_reservation_ids = @salon.salons_reservations.pluck(:id)
+    @reservation_total = salon_reservation_ids.count
+    @today_reservation = Reservation.reserved_schedules(salon_reservation_ids).page(params[:page])
   end
 
   def edit

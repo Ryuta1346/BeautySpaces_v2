@@ -81,3 +81,12 @@ Airbnb/SimpleModifierConditional:
 
 Lint/Debugger:
   Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/DotPosition:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: false

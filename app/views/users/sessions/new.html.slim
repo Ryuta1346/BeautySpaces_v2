@@ -1,0 +1,18 @@
+.form_layouts
+  h2
+    | Log in
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field
+      = f.label :email, class: "form_label"
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form_field"
+    .field
+      = f.label :password, class: "form_label"
+      = f.password_field :password, autocomplete: "current-password", class: "form_field"
+    - if devise_mapping.rememberable?
+      .field
+        = f.check_box :remember_me
+        = f.label :remember_me, class: "form_label"
+    .action
+      = f.submit "Log in"
+    .field
+      = render "devise/shared/links"

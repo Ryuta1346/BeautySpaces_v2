@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_31_130711) do
+ActiveRecord::Schema.define(version: 2019_09_06_154749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,7 +83,14 @@ ActiveRecord::Schema.define(version: 2019_07_31_130711) do
     t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "finish_salon", default: false, null: false
+    t.boolean "finish_stylist", default: false, null: false
+    t.text "salon_memo"
+    t.text "stylist_memo"
     t.index ["customer_id"], name: "index_reservations_on_customer_id"
+    t.index ["salons_reservation_id"], name: "index_reservations_on_salons_reservation_id", unique: true
+    t.index ["stylists_menu_id"], name: "index_reservations_on_stylists_menu_id"
+    t.index ["stylists_reservation_id"], name: "index_reservations_on_stylists_reservation_id", unique: true
   end
 
   create_table "salons_reservations", force: :cascade do |t|
@@ -95,6 +102,7 @@ ActiveRecord::Schema.define(version: 2019_07_31_130711) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_salons_reservations_on_customer_id"
+    t.index ["reservation_time"], name: "index_salons_reservations_on_reservation_time"
   end
 
   create_table "stylists_menus", force: :cascade do |t|
@@ -120,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_07_31_130711) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_stylists_reservations_on_customer_id"
+    t.index ["reservation_time"], name: "index_stylists_reservations_on_reservation_time"
   end
 
   add_foreign_key "areas", "prefectures"
@@ -127,6 +136,8 @@ ActiveRecord::Schema.define(version: 2019_07_31_130711) do
   add_foreign_key "customers", "prefectures"
   add_foreign_key "prefectures", "regions"
   add_foreign_key "reservations", "customers"
+  add_foreign_key "reservations", "salons_reservations"
+  add_foreign_key "reservations", "stylists_reservations"
   add_foreign_key "salons_reservations", "customers"
   add_foreign_key "stylists_menus", "customers"
   add_foreign_key "stylists_reservations", "customers"
