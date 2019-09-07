@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   belongs_to :prefecture
 
   VALID_PHONE_REGEX = /\A\d{10,11}\z/
-  VALID_TYPES       = %w[User Salon Stylist]
+  VALID_TYPES       = %w[user salon stylist]
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :tel, presence: true, length: { maximum: 11, minimum: 10 }, format: { with: VALID_PHONE_REGEX }
