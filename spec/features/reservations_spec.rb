@@ -14,11 +14,13 @@ RSpec.feature "Reservations", type: :feature do
   let!(:stylists_menu1) { create(:stylists_menu, customer: stylist1) }
 
   let(:user1) { create(:user, prefecture: prefecture1, category_id: category2.id) }
-  let!(:reservation1) { create(:reservation,
-                               salons_reservation:   salons_reservation1,
-                               stylists_reservation: stylists_reservation1,
-                               stylists_menu:        stylists_menu1,
-                               customer:             user1) }
+  let!(:reservation1) {
+    create(:reservation,
+           salons_reservation:   salons_reservation1,
+           stylists_reservation: stylists_reservation1,
+           stylists_menu:        stylists_menu1,
+           customer:             user1)
+  }
 
   feature 'is displayed', open_on_error: true do
     scenario 'on Salon admin page' do
