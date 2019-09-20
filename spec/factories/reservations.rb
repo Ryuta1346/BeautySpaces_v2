@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :reservation do
-    salons_reservation_id { 1 }
-    stylists_reservation_id { 1 }
-    stylists_menu_id { 1 }
-    customer { nil }
+    association :salons_reservation
+    association :stylists_reservation
+    association :stylists_menu
+    association :customer
     memo { "MyText" }
     status { false }
   end
