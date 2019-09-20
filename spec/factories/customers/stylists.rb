@@ -4,7 +4,7 @@ FactoryBot.define do
     sequence(:email) { |n| "stylist#{n}@example.com" }
     password { 'foobar' }
     password_confirmation { 'foobar' }
-    sequence(:tel) { |n| "000000000#{n}0" }
+    sequence(:tel) { |n| "0000000#{n-1}00" }
     features { 'String' }
     num_of_sheets { 5 }
     opening_time { '09:00' }

@@ -9,9 +9,9 @@ RSpec.feature "Reservations", type: :feature do
   let(:salon1) { create(:salon, category_id: category1.id, prefecture: prefecture1) }
   let(:salons_reservation1) { create(:salons_reservation, customer: salon1) }
 
-  let(:stylist1) { create(:stylist, category_id: category1.id, prefecture: prefecture1) }
+  let!(:stylist1) { create(:stylist, category_id: category1.id, prefecture: prefecture1) }
   let(:stylists_reservation1) { create(:stylists_reservation, customer: stylist1) }
-  let(:stylists_menu1) { create(:stylists_menu, customer: stylist1) }
+  let!(:stylists_menu1) { create(:stylists_menu, customer: stylist1) }
 
   let(:user1) { create(:user, prefecture: prefecture1, category_id: category2.id) }
   let!(:reservation1) { create(:reservation,
@@ -23,7 +23,7 @@ RSpec.feature "Reservations", type: :feature do
   feature 'is displayed', open_on_error: true do
     scenario 'on Salon admin page' do
       go_to_salon_page
-      expect(page).to have_content "User 1"
+      expect(page).to have_content reservation1.customer.name
     end
 
     scenario 'on Stylist admin page' do
