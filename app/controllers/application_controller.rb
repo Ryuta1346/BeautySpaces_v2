@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::API
   devise_group :customer, contains: [:user, :salon, :stylist]
   before_action :configure_permitted_parameters, if: :devise_controller?
 

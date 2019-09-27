@@ -68,4 +68,6 @@ Rails.application.configure do
     Bullet.console = true
     Bullet.rails_logger = true
   end
+
+  config.debug_exception_response_format = :api
 end
