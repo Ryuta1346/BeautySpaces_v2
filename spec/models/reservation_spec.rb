@@ -37,10 +37,6 @@ RSpec.describe Reservation, type: :model do
     expect(reservation_info(salon1).only_today.first.salons_reservation.reservation_time).to eq reservation1.salons_reservation.reservation_time
   end
 
-  it "returns only today's reservation info" do
-    expect(reservation_info(salon1).only_today.first.salons_reservation.reservation_time).not_to eq reservation2.salons_reservation.reservation_time
-  end
-
   it "returns reservation's schedule in the correct order" do
     expect(reservation_info(salon1).only_today.order(reservation_time: :asc).first).to eq reservation2
   end
