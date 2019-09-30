@@ -28,7 +28,7 @@ RSpec.describe Reservation, type: :model do
            customer:             user)
   }
 
-  it "returns reservation information for specific salon" do
+  it "returns reservation information for own salon" do
     expect(reservation_info(salon1).size).to eq 2
   end
 

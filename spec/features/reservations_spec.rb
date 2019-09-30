@@ -30,19 +30,16 @@ RSpec.feature "Reservations", type: :feature do
 
     scenario 'on Stylist admin page' do
       go_to_stylist_page
-      # Stylistの管理ページトップのUIテスト
     end
 
     scenario 'on User page' do
       go_to_user_page
-      # UserのトップページのUIテスト
     end
   end
 
   feature 'is registered', open_on_error: true do
     scenario 'on User page' do
       go_to_user_page
-      # 新規の予約登録のテスト
     end
   end
 
