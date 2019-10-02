@@ -25,7 +25,7 @@ RSpec.feature "Stylists::Menus", type: :feature do
       expect(page).to have_content "お得なカット+カラー+トリートメントセット"
     end
 
-    scenario 'with brank menu_name' do
+    scenario 'with brank menu_name', open_on_error: true do
       fill_in 'stylists_menu[name]', with: ''
       fill_in 'stylists_menu[price]', with: '8990'
       fill_in 'stylists_menu[operation_time]', with: '120'

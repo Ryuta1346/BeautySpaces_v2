@@ -4,7 +4,7 @@ FactoryBot.define do
     sequence(:email) { |n| "user#{n}@example.com" }
     password { 'foobar' }
     password_confirmation { 'foobar' }
-    sequence(:tel) { |n| "00000000#{n}00" }
+    sequence(:tel) { |n| "0000000#{n}00" }
     association :prefecture
     city { 'String' }
     address1 { 'String' }

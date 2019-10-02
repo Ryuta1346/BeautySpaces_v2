@@ -4,7 +4,7 @@ class Admin::SalonsController < Admin::Base
   def show
     salon_reservation_ids = @salon.salons_reservations.pluck(:id)
     @reservation_total = salon_reservation_ids.count
-    @today_reservation = Reservation.reserved_schedules(salon_reservation_ids).page(params[:page])
+    @today_reservation = Reservation.reserved_schedules(salon_reservation_ids).page(params[:page]).per(20)
   end
 
   def edit
