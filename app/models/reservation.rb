@@ -11,7 +11,10 @@ class Reservation < ApplicationRecord
     includes(:salons_reservation, :stylists_menu, :customer, stylists_reservation: [:customer])
         .joins(salons_reservation: :customer)
         .in_salon_reservations(salon_reservation_ids)
-        .only_today
         .order(reservation_time: :asc)
   end
+
+  # def self.unreserved_salon_info(salon_reservation_ids)
+  #   in_salon_reservations(salon_reservation_ids)
+  # end
 end

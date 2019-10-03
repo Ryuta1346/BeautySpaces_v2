@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resource :salon, only: [:show, :edit, :update] do
       resources :reservations, except: [:new], controller: '/admin/salons/reservations'
+      get '/reserved_index', to: 'salons/reservations#reserved_index', as: :reserved_index
+      get '/reserved/:id', to: 'salons/reservations#reserved', as: :reserved
     end
 
     resource :stylist, only: [:show, :edit, :update] do

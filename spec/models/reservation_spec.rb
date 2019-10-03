@@ -38,7 +38,7 @@ RSpec.describe Reservation, type: :model do
   end
 
   it "returns reservation's schedule in the correct order" do
-    expect(reservation_info(salon1).only_today.order(reservation_time: :asc).first).to eq reservation2
+    expect(reservation_info(salon1).order(reservation_time: :asc).only_today.first).to eq reservation2
   end
 
   def reservation_info(salon)

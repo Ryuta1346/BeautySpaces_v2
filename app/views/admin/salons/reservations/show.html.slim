@@ -10,33 +10,17 @@
       tbody
         tr
           th
-            | 予約日時
+            | 日時
           td
-            = reservation_time(@reservation.salons_reservation.reservation_time)
-        tr
-          th
-            | スタイリスト
-          td
-            = @reservation.stylists_reservation.customer.name
-        tr
-          th
-            | メニュー
-          td
-            = @reservation.stylists_menu.name
+            = reservation_time(@reservation.reservation_time)
         tr
           th
             | 施術時間
           td
-            = @reservation.stylists_menu.operation_time
+            = @reservation.operation_time
             | 分
-        tr
-          th
-            | 料金
-          td
-            = @reservation.stylists_menu.price
-            | 円
-      - if @reservation.finish_salon
-        = render partial: 'completed', locals: { reservation: @reservation }
-      - else
-        = render partial: 'not_complete', locals: { reservation: @reservation }
+    /   - if @reservation.finish_salon
+    /     = render partial: 'completed', locals: { reservation: @reservation }
+    /   - else
+    /     = render partial: 'not_complete', locals: { reservation: @reservation }
     = link_to '戻る', :back
