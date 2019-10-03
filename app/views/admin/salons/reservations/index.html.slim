@@ -1,2 +1,32 @@
-h1 Admin::Salons::Reservations#index
-p Find me in app/views/admin/salons/reservations/index.html.slim
+.manage-main-container
+  = render '/admin/salons/sidebar'
+
+  .manage-main-contents
+    table.reserve_table
+      caption
+        | 予約可能時間一覧
+      thead
+        tr
+          th
+            | #
+          th
+            | 日時
+          th
+            | 施術可能時間
+          th
+            | 備考
+          th
+            | 詳細
+      tbody
+        - @unreserved_reservations.each.with_index(1) do |rev, i|
+          tr
+            td
+              = rev.id
+            td
+              = reservation_time(rev.reservation_time)
+            td
+              = operation(rev.operation_time)
+            td
+              = rev.memo
+            td
+              = link_to '詳細', admin_salon_reservation_path(rev)

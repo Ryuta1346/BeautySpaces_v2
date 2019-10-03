@@ -1,0 +1,47 @@
+.manage-main-container
+  = render 'admin/salons/sidebar'
+
+  .manage-main-contents
+    table
+      caption
+        | 取引詳細
+      thead
+
+      tbody
+        tr
+          th
+            | 顧客名
+          td
+            = @reserved_info.customer.name
+        tr
+          th
+            | 予約日時
+          td
+            = reservation_time(@reserved_info.salons_reservation.reservation_time)
+        tr
+          th
+            | スタイリスト
+          td
+            = @reserved_info.stylists_reservation.customer.name
+        tr
+          th
+            | メニュー
+          td
+            = @reserved_info.stylists_menu.name
+        tr
+          th
+            | 施術時間
+          td
+            = @reserved_info.stylists_menu.operation_time
+            | 分
+        tr
+          th
+            | 料金
+          td
+            = @reserved_info.stylists_menu.price
+            | 円
+      - if @reserved_info.finish_salon
+        = render partial: 'completed', locals: { reservation: @reserved_info }
+      - else
+        = render partial: 'not_complete', locals: { reservation: @reserved_info }
+    = link_to '戻る', :back
