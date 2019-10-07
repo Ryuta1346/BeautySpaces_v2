@@ -1,25 +1,27 @@
 class Admin::Salons::ReservationsController < ApplicationController
   before_action :set_current_salon
 
-  # 予約されていない情報を一覧表示
+  # 予約されていない情報を一覧表示(/resevations)
   def index
     salon_reservation_ids    = @salon.salons_reservations.pluck(:id)
     reservations             = Reservation.in_salon_reservations(salon_reservation_ids).pluck(:salons_reservation_id)
     @unreserved_reservations = @salon.salons_reservations.where.not(id: reservations)
   end
 
-  # 予約済み情報を一覧表示
+  # 予約済み情報を一覧表示(/reserved_index)
   def reserved_index
     salon_reservation_ids = @salon.salons_reservations.pluck(:id)
     @reservations         = Reservation.reserved_schedules(salon_reservation_ids)
   end
 
-  def reserved
-    @reserved_info        = Reservation.find(params[:id])
-  end
-
+  # 予約されていない予約可能時間情報の取得(/reservations/:id)
   def show
     @reservation = @salon.salons_reservations.find(params[:id])
+  end
+
+  # 個別の予約済み情報取得(/reserved/:id)
+  def reserved
+    @reserved_info = Reservation.find(params[:id])
   end
 
   def create

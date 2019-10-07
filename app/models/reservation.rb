@@ -13,8 +13,4 @@ class Reservation < ApplicationRecord
         .in_salon_reservations(salon_reservation_ids)
         .order(reservation_time: :asc)
   end
-
-  # def self.unreserved_salon_info(salon_reservation_ids)
-  #   in_salon_reservations(salon_reservation_ids)
-  # end
 end

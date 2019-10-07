@@ -21,7 +21,7 @@
         - @unreserved_reservations.each.with_index(1) do |rev, i|
           tr
             td
-              = rev.id
+              = i
             td
               = reservation_time(rev.reservation_time)
             td

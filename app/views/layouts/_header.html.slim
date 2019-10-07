@@ -6,5 +6,6 @@
         | 好きなスタイリストに好きなサロンで。
         br
         | あなたのお気に入りのスタイリストに、お気に入りのサロンで施術してもらうための予約サービス BeautySpace(ビューティースペース)
-    .header-link
-      = link_to "サロン/スタイリストの方はこちら", info_path
+    - unless salon_signed_in? || stylist_signed_in?
+      .header-link
+        = link_to "サロン/スタイリストの方はこちら", info_path
