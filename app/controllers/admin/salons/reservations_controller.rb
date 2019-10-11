@@ -14,6 +14,13 @@ class Admin::Salons::ReservationsController < ApplicationController
     @reservations         = Reservation.reserved_schedules(salon_reservation_ids)
   end
 
+  # 施術済みの予約や予約済みの情報を処理するために別途コントローラとviewsを生成する？
+  # 施術済みの情報一覧表示(取引管理)
+  def sales_management
+    salon_reservation_ids = @salon.salons_reservations.pluck(:id)
+    @reserved_lists       = Reservation.reserved_schedules(salon_reservation_ids).where(finish_salon: true)
+  end
+
   # 予約されていない予約可能時間情報の取得(/reservations/:id)
   def show
     @reservation = @salon.salons_reservations.find(params[:id])
