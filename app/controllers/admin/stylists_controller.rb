@@ -1,4 +1,4 @@
-class Admin::StylistsController < Admin::Base
+class Admin::StylistsController < ApplicationController
   before_action :set_current_stylist
 
   def show

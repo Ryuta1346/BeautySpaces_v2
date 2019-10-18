@@ -1,4 +1,4 @@
-class Admin::SalonsController < Admin::Base
+class Admin::SalonsController < ApplicationController
   before_action :set_current_salon
 
   def show

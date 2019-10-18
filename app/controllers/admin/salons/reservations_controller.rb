@@ -1,17 +1,9 @@
-class Admin::Salons::ReservationsController < ApplicationController
-  before_action :set_current_salon
-
+class Admin::Salons::ReservationsController < Admin::Salons::BaseController
   # 予約されていない情報を一覧表示(/resevations)
   def index
     salon_reservation_ids    = @salon.salons_reservations.pluck(:id)
     reservations             = Reservation.in_salon_reservations(salon_reservation_ids).pluck(:salons_reservation_id)
     @unreserved_reservations = @salon.salons_reservations.where.not(id: reservations)
-  end
-
-  # 予約済み情報を一覧表示(/reserved_index)
-  def reserved_index
-    salon_reservation_ids = @salon.salons_reservations.pluck(:id)
-    @reservations         = Reservation.reserved_schedules(salon_reservation_ids)
   end
 
   # 施術済みの予約や予約済みの情報を処理するために別途コントローラとviewsを生成する？
@@ -24,11 +16,6 @@ class Admin::Salons::ReservationsController < ApplicationController
   # 予約されていない予約可能時間情報の取得(/reservations/:id)
   def show
     @reservation = @salon.salons_reservations.find(params[:id])
-  end
-
-  # 個別の予約済み情報取得(/reserved/:id)
-  def reserved
-    @reserved_info = Reservation.find(params[:id])
   end
 
   def create
@@ -62,15 +49,4 @@ class Admin::Salons::ReservationsController < ApplicationController
     flash[:success] = "#{@reservation.reservation_time}の予約可能時間情報を削除しました"
     redirect_to admin_salon_url
   end
-
-  private
-
-    def set_current_salon
-      redirect_to root_url unless current_customer&.correct_customer?('Salon')
-      @salon ||= current_customer
-    end
-
-    def salon_reservation_params
-      params.require(:salons_reservation).permit(:reservation_time, :operation_time, :memo, :status)
-    end
 end

@@ -1,4 +1,4 @@
-class Admin::UsersController < Admin::Base
+class Admin::UsersController < ApplicationController
   before_action :set_current_user
 
   def show

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    namespace :salons do
+      get 'reservation_histories/index'
+      get 'reservation_histories/show'
+      get 'reservation_histories/edit'
+    end
+  end
   devise_for :salons
   devise_for :users
   devise_for :stylists
@@ -15,8 +22,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resource :salon, only: [:show, :edit, :update] do
       resources :reservations, except: [:new], controller: '/admin/salons/reservations'
-      get '/reserved_index', to: 'salons/reservations#reserved_index', as: :reserved_index
-      get '/reserved/:id', to: 'salons/reservations#reserved', as: :reserved
+      resources :reservation_histories, except:[:new], path: 'reserved', as: :reserved, controller: '/admin/salons/reservation_histories'
+      # get '/reserved_index', to: 'salons/reservations#reserved_index', as: :reserved_index
+      # get '/reserved/:id', to: 'salons/reservations#reserved', as: :reserved
     end
 
     resource :stylist, only: [:show, :edit, :update] do
