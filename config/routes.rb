@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   namespace :admin do
     namespace :salons do
+      get 'sales_histories/index'
+      get 'sales_histories/show'
+      get 'sales_histories/edit'
+    end
+  end
+  namespace :admin do
+    namespace :salons do
       get 'reservation_histories/index'
       get 'reservation_histories/show'
       get 'reservation_histories/edit'
