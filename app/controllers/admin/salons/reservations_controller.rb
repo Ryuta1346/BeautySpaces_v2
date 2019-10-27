@@ -1,9 +1,16 @@
 class Admin::Salons::ReservationsController < Admin::Salons::BaseController
   # 予約されていない情報を一覧表示(/resevations)
   def index
-    salon_reservation_ids    = @salon.salons_reservations.pluck(:id)
-    reservations             = Reservation.in_salon_reservations(salon_reservation_ids).pluck(:salons_reservation_id)
-    @unreserved_reservations = @salon.salons_reservations.where.not(id: reservations)
+    salon_reservation_ids = @salon.salons_reservations.pluck(:id)
+    reservations          = Reservation.in_salon_reservations(salon_reservation_ids).pluck(:salons_reservation_id)
+    ## パラメータによるフィルタで、表示の切り替えができないか？
+    if params[:reservation][:finish_salon][:false]
+      @reservation_info = @salon.salons_reservations.where.not(id: reservations)
+    elsif params[:reservation][:finish_salon][:false]
+      @reservation_info = @salon.salons_reservations.where(id: reservations)
+    else
+      @reservation_info = Salons::Reservation.all
+    end
   end
 
   # 施術済みの予約や予約済みの情報を処理するために別途コントローラとviewsを生成する？
@@ -49,4 +56,10 @@ class Admin::Salons::ReservationsController < Admin::Salons::BaseController
     flash[:success] = "#{@reservation.reservation_time}の予約可能時間情報を削除しました"
     redirect_to admin_salon_url
   end
+
+  private
+
+    def non_reservation_params
+
+    end
 end
